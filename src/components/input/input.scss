@@ -1,0 +1,14 @@
+.input {
+  position: relative;
+  width: 100%;
+  --input-border-color: var(--color-blue);
+
+  &__label {
+    
+  }
+
+  &__field {
+    height: 40px;
+    border-bottom: 1px solid var(--input-border-color);
+  }
+}

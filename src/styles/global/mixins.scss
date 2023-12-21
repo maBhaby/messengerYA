@@ -1,0 +1,63 @@
+@mixin flex($type) {
+  display: flex;
+
+  @if $type == "lc" {
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  @if $type == "sc" {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @if $type == "rc" {
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  @if $type == "cc" {
+    justify-content: center;
+    align-items: center;
+  }
+
+  @if $type == "ct" {
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  @if $type == "lt" {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  @if $type == "st" {
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  @if $type == "rt" {
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+
+  @if $type == "cb" {
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  @if $type == "lb" {
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+
+  @if $type == "sb" {
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  @if $type == "rb" {
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+}

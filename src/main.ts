@@ -2,12 +2,19 @@ import Handlebars from 'handlebars'
 
 import * as Pages from './pages'
 import * as Components from './components'
+import * as Layouts from './layouts'
+
+import './styles/index.scss'
 
 const pages = {
   'login': [ Pages.LoginPage, {test: '123'} ]
 };
 
 Object.entries(Components).forEach(([ name, components ]) => {
+  Handlebars.registerPartial(name, components)
+})
+
+Object.entries(Layouts).forEach(([ name, components ]) => {
   Handlebars.registerPartial(name, components)
 })
 

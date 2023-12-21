@@ -1,0 +1,43 @@
+.button {
+  cursor: pointer;
+  border-radius: 8px;
+
+  &__color {
+    &-blue {
+      background-color: var(--color-blue);
+      color:var(--color-white);
+    }
+
+    &-transparent {
+      background-color: transparent;
+      color: var(--color-blue);
+    }
+  }
+  
+  &__size {
+    &-xs {
+      padding: 5px 2px;
+      
+      font-size: 11px;
+      line-height: 120%;
+      font-weight: 500;
+    }
+
+    &-md {
+      padding: 10px 15px;
+
+      font-size: 12px;
+      line-height: 120%;
+      font-weight: 500;
+    }
+
+    &-full {
+      width: 100%;
+      padding: 10px 5px;
+
+      font-size: 13px;
+      line-height: 120%;
+      font-weight: 500;
+    }
+  }
+}

@@ -1,4 +1,17 @@
-<main>
-  asdasd
-  {{> Input name="login" type="text"}}
-</main>
+{{#> AuthLayout }}
+<div class="auth-page__wrapper">
+  <form class="auth-page__form">
+    {{#> Title tag="h1" size="20" weight="500" className="auth-page__title"}}Вход{{/Title}}
+    {{> Input name="login" type="text" label="Логин"}}
+    {{> Input name="password" type="password" label="Пароль"}}
+    <div class="auth-page__footer">
+      {{#> Button size="full" colorTheme="blue"}}
+        Авторизоваться
+      {{/Button}}
+      {{#> Button colorTheme="transparent" size="xs"}}
+        Нет аккаунта?
+      {{/Button}}
+    </div>
+  </form>
+</div>
+{{/AuthLayout }}
