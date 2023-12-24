@@ -3,7 +3,9 @@
   <input
     class="user-value-row__input" 
     value="{{value}}" 
-    disabled="{{disabled}}" 
+    {{#if disabled}}
+      disabled="{{disabled}}"
+    {{/if}}
     type="{{type}}" 
     name="{{name}}"
   >

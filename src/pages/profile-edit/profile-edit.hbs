@@ -1,5 +1,8 @@
 {{#> ProfileLayout }}
-<div class="profile-edit-page">
+{{#> Title tag="h1" className="visually-hidden"}}
+  Редактирование профиля
+{{/Title}}
+<form class="profile-edit-page">
   <div class="profile-edit-page__header">
     {{> ChangeAvatar}}
   </div>
@@ -13,5 +16,5 @@
   {{#>Button size="full" colorTheme="blue" className="profile-edit-page__save" }}
   Сохранить
   {{/Button}}
-</div>
+</form>
 {{/ProfileLayout }}
