@@ -1,0 +1,35 @@
+@use "src/styles/global/mixins";
+
+.change-avatar {
+  @include mixins.flex('cc');
+
+  width: 130px;
+  height: 130px;
+  border-radius: 100%;
+  background-color: var(--color-light-gray);
+
+  cursor: pointer;
+  overflow: hidden;
+
+  position: relative;
+
+  &:hover {
+    .change-avatar__wrap {
+      opacity: 1;
+    }
+  }
+
+  &__wrap {
+    position: absolute;
+    inset: 0;
+    @include mixins.flex('cc');
+    
+    font-size: 13px;
+    color: var(--color-white);
+    background-color: var(--color-dark-light);
+    
+    opacity: 0;
+
+    transition: var(--transition-fast);
+  }
+}

@@ -1,0 +1,16 @@
+@use "src/styles/global/mixins";
+
+.user-value-row {
+  @include mixins.flex('sc');
+
+  height: 35px;
+
+  &__label {
+    display: block;
+    width: 50%;
+  }
+
+  &__input {
+    width: 50%;
+  }
+}

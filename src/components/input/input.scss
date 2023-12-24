@@ -4,7 +4,9 @@
   --input-border-color: var(--color-blue);
 
   &__label {
-    
+    color: var(--color-gray);
+    font-size: 13px;
+    font-weight: 500;
   }
 
   &__field {

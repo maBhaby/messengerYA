@@ -1,6 +1,6 @@
 @use "src/styles/global/mixins";
 
-.auth-layout {
+.center-layout {
   @include mixins.flex('cc');
   height: 100dvh;
 }

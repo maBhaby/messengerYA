@@ -1,8 +1,12 @@
 @use "src/styles/global/mixins";
 
-.auth-page {
+.reg-page {
   &__wrapper {
     @include mixins.reg-form;
+  }
+
+  &__title {
+    margin-bottom: 40px;
   }
 
   &__form {
@@ -11,12 +15,8 @@
     align-items: center;
   }
 
-  &__title {
-    margin-bottom: 40px;
-  }
-
   &__footer {
-    margin-top: 160px;
+    margin-top: 40px;
     width: 100%;
 
     display: flex;

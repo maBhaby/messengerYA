@@ -1,0 +1,29 @@
+@use "src/styles/global/mixins";
+
+.profile-page {
+  flex-grow: 1;
+  max-width: 550px;
+  width: 100%;
+  padding: 60px 0;
+  height: 100%;
+  
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__header {
+    margin-bottom: 60px;
+  }
+
+  &__list {
+    width: 100%;
+
+    margin-bottom: 50px;
+
+    &_item {
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--color-light-gray);
+      }
+    }
+  }
+}

@@ -1,16 +1,24 @@
 .title {
   font-size: 14px;
   font-weight: 400;  
+  line-height: 110%;
 
   &__size {
     &-20 {
       font-size: 20px;
-      line-height: 110%;
+    }
+
+    &-40 {
+      font-size: 40px;
     }
   }
 
   &-weight {
     &-500 {
+      font-weight: 500;
+    }
+    
+    &-400 {
       font-weight: 500;
     }
   }

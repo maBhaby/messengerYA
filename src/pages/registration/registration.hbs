@@ -1,0 +1,22 @@
+{{#> CenterLayout }}
+<div class="reg-page__wrapper">
+  <form class="reg-page__form">
+    {{#> Title tag="h1" size="20" weight="500" className="reg-page__title"}}Регистрация{{/Title}}
+    {{> Input value="test@ya.ru" name="email" type="email" label="Почта"}}
+    {{> Input value="ivanivanov" name="login" type="text" label="Логин"}}
+    {{> Input value="Иван" name="first_name" type="text" label="Логин"}}
+    {{> Input value="Иванов" name="second_name" type="text" label="Фамилия"}}
+    {{> Input value="+7 (909) 967 30 30" name="phone" type="text" label="Телефон"}}
+    {{> Input value="12345" name="password" type="password" label="Пароль"}}
+    {{> Input value="12345" name="repeat_password" type="password" label="Пароль (ещё раз)"}}
+    <div class="reg-page__footer">
+      {{#> Button page="chat" size="full" colorTheme="blue"}}
+        Зарегистрироваться
+      {{/Button}}
+      {{#> Button page="login" colorTheme="transparent" size="xs"}}
+        Войти
+      {{/Button}}
+    </div>
+  </form>
+</div>
+{{/CenterLayout }}

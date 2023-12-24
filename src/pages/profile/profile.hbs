@@ -1,0 +1,31 @@
+{{#> ProfileLayout}}
+  <div class="profile-page">
+    <div class="profile-page__header">
+      {{> ChangeAvatar}}
+    </div>
+    <ul class="profile-page__list">
+      {{#each (profileValue)}}
+        <li class="profile-page__list_item">
+          {{> UserValueRow}}
+        </li>
+      {{/each}}
+    </ul>
+    <ul class="profile-page__list">
+      <li class="profile-page__list_item">
+        {{#> Link page="profile-edit" color="blue"}}
+          Изменить данные
+        {{/Link}}
+      </li>
+      <li class="profile-page__list_item">
+        {{#> Link page="change-password" color="blue"}}
+          Изменить пароль
+        {{/Link}}
+      </li>
+      <li class="profile-page__list_item">
+        {{#> Link page="login" color="red"}}
+          Выйти
+        {{/Link}}
+      </li>
+    </ul>
+  </div>
+{{/ProfileLayout}}

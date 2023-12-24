@@ -61,3 +61,9 @@
     align-items: flex-end;
   }
 }
+
+@mixin reg-form {
+  padding: 50px 30px 30px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 6px 0px var(--color-shadow);
+}

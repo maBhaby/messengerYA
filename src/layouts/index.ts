@@ -1,1 +1,2 @@
-export { AuthLayout } from './auth'
+export { CenterLayout } from './center'
+export { ProfileLayout } from './profile'
