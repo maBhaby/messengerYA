@@ -1,3 +1,17 @@
 {{#> ProfileLayout }}
-
+<div class="profile-edit-page">
+  <div class="profile-edit-page__header">
+    {{> ChangeAvatar}}
+  </div>
+  <ul class="profile-edit-page__list">
+    {{#each (profileValue)}}
+    <li class="profile-edit-page__list_item">
+      {{> UserValueRow}}
+    </li>
+    {{/each}}
+  </ul>
+  {{#>Button size="full" colorTheme="blue" className="profile-edit-page__save" }}
+  Сохранить
+  {{/Button}}
+</div>
 {{/ProfileLayout }}

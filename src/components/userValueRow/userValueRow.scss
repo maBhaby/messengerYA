@@ -12,5 +12,10 @@
 
   &__input {
     width: 50%;
+    text-align: end;
+
+    &:disabled {
+      background-color: transparent;
+    }
   }
 }

@@ -11,7 +11,7 @@ const pages = {
   registration: [Pages.RegistrationPage],
   page404: [Pages.ErrorPage, {errorCode: 404, errorMessage: 'Не туда попали'}],
   page500: [Pages.ErrorPage, {errorCode: 500, errorMessage: 'Мы уже фиксим'}],
-  profile: [Pages.ProfilePage],
+  profile: [Pages.ProfilePage, {userName: 'Иван'}],
   'profile-edit': [Pages.ProfileEditPage],
   'change-password': [Pages.ProfileChangePassword]
 };
