@@ -1,0 +1,16 @@
+.chat-page {
+  display: grid;
+  grid-template-columns: minmax(200px, 310px) 1fr;
+  height: 100%;
+
+  &__chat_list {
+    height: 100%;
+
+    border-right: 1px solid var(--color-secondary-gray);
+    background-color: var(--color-gray-back-bg);
+  }
+
+  &__current_chat {
+    
+  }
+}

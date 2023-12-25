@@ -1,0 +1,73 @@
+@use "src/styles/global/mixins";
+
+.chat-item {
+  // border-top: 1px solid  var(--color-gray);
+  // border-bottom: 1px solid  var(--color-gray);
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px;
+
+  transition: var(--transition-fast);
+
+  &:hover {
+    background-color: var(--color-light-blue);
+  }
+
+  &__thumbnail {
+    width: 47px;
+    height: 47px;
+    border-radius: 100%;
+    background-color: var(--color-light-gray);
+  }
+
+  &__core {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    
+    &_top {
+      @include mixins.flex('sc');
+    }
+
+    &_bottom {
+      @include mixins.flex('sc');
+    }
+
+    &_title {
+      font-size: 13px;
+      line-height: 125%;
+      font-weight: 600;
+    }
+
+    &_time {
+      font-size: 9px;
+      line-height: 130%;
+
+      color: var(--color-gray);
+    }
+
+    &_message {
+      font-size: 13px;
+      line-height: 125%;
+      color: var(--color-gray);
+    }
+
+    &_unread_message {
+      @include mixins.flex('cc');
+
+      width: 20px;
+      height: 20px;
+
+      border-radius: 100%;
+      background-color: var(--color-blue);
+      color: var(--color-white);
+
+      font-size: 11px;
+    }
+  }
+}

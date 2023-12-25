@@ -1,0 +1,21 @@
+.search-panel {
+  height: var(--search-panel-height);
+  padding: 20px 10px 15px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__top {
+    text-align: end;
+    margin-bottom: 2;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    font-size: 13px;
+  }
+}

@@ -4,7 +4,17 @@ import * as Pages from './pages'
 import * as Components from './components'
 import * as Layouts from './layouts'
 
+import * as ChatComponents from './pages/chat/components'
+
 import './styles/index.scss'
+
+const AllAppElements = {
+  ...Pages,
+  ...Components,
+  ...Layouts,
+  ...ChatComponents
+}
+
 
 const pages = {
   login: [ Pages.LoginPage, {test: '123'} ],
@@ -12,17 +22,15 @@ const pages = {
   page404: [Pages.ErrorPage, {errorCode: 404, errorMessage: 'Не туда попали'}],
   page500: [Pages.ErrorPage, {errorCode: 500, errorMessage: 'Мы уже фиксим'}],
   profile: [Pages.ProfilePage, {userName: 'Иван'}],
+  chat: [Pages.ChatPage],
   'profile-edit': [Pages.ProfileEditPage],
   'change-password': [Pages.ProfileChangePassword]
 };
 
-Object.entries(Components).forEach(([ name, components ]) => {
+Object.entries(AllAppElements).forEach(([ name, components ]) => {
   Handlebars.registerPartial(name, components)
 })
 
-Object.entries(Layouts).forEach(([ name, components ]) => {
-  Handlebars.registerPartial(name, components)
-})
 
 function navigate(page: string) {
   //@ts-ignore
@@ -31,7 +39,7 @@ function navigate(page: string) {
   container.innerHTML = Handlebars.compile(source)(context);
 }
 
-document.addEventListener('DOMContentLoaded', () => navigate('profile'));
+document.addEventListener('DOMContentLoaded', () => navigate('chat'));
 
 document.addEventListener('click', e => {
   //@ts-ignore

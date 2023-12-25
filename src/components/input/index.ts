@@ -1,1 +1,2 @@
-export { default as Input } from './input.hbs?raw'
+export { BaseInput } from './base'
+export { SearchInput } from './search'
