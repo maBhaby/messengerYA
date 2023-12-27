@@ -1,0 +1,27 @@
+<footer class="chat-new-message">
+  <form class="chat-new-message__form" action="">
+    {{#> Button colorTheme="transparent"}}
+      <img 
+        src="src/static/images/pinIcon.svg" 
+        alt="pin" 
+        height="34" 
+        width="32"
+      >
+    {{/Button}}
+    <div>
+      {{> MessageInput placeholder="Сообщение"}}
+    </div>
+    {{#> 
+      Button 
+      colorTheme="blue" 
+      className="chat-new-message__send_btn"
+    }}
+      <img 
+        src="src/static/images/arrow.svg" 
+        alt="pin" 
+        height="15" 
+        width="30"
+      >
+    {{/Button}}
+  </form>
+</footer>

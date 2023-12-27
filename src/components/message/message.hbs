@@ -1,0 +1,24 @@
+{{#if image}}
+  <div class="message message__type--image {{className}}">
+    <img src="{{image}}" alt="фото сообщения" width="300" height="">
+    <div class="message__bottom message__bottom--image">
+      <div class="message__time">
+        {{time}}
+      </div>
+    </div>
+  </div>
+{{else}}
+  <div class="message message__type--{{type}} {{className}}">
+    <p>
+      {{message}}
+    </p>
+    <div class="message__bottom">
+      {{#if status}}
+      <div></div>
+      {{/if}}
+      <div class="message__time">
+        {{time}}
+      </div>
+    </div>
+  </div>
+{{/if}}

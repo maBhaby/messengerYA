@@ -1,0 +1,41 @@
+.chat-messages {
+  height: calc(100dvh - var(--chat-panel-height) * 2);
+  padding: 20px 0;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  &__story {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+    &_time {
+      padding: 20px 0;
+
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-gray);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__type {
+    display: flex;
+    
+    &--me {
+      justify-content: flex-end;
+    }
+
+    &--chat {
+      justify-content: flex-start;
+    }
+  }
+}

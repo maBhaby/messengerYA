@@ -8,13 +8,15 @@
   --color-light-gray: #EFEFEF;
   --color-secondary-gray: #EAEAEA;
   --color-light-blue: #E4EDFD;
+  --color-message-gray: #F8F8F8;
   --color-dark-light: #00000080;
 
   --color-shadow: #00000024;
 
-  --font-primary: 'Inter';
+  --font-primary: 'Inter', sans-serif;
   
   --transition-fast: .15s;
 
   --search-panel-height: 100px;
+  --chat-panel-height: 56px;
 }
