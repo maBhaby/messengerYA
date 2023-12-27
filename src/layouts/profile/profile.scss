@@ -21,6 +21,8 @@
       border-radius: 100%;
       background-color: var(--color-blue);
       @include mixins.flex('cc');
+
+      z-index: 10;
     }
   }
 

@@ -9,10 +9,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    max-width: 320px;
   }
 
   &__title {
     margin-bottom: 40px;
+  }
+
+  &__input:not(:last-child) {
+    margin-bottom: 10px;
   }
 
   &__footer {

@@ -48,6 +48,5 @@ document.addEventListener('click', e => {
     navigate(page);
 
     e.preventDefault();
-    e.stopImmediatePropagation();
   }
 });

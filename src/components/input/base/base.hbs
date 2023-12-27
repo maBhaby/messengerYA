@@ -1,10 +1,15 @@
-<div class="input">
+<div class="input {{className}}">
   <label for="{{name}}" class="input__wrap">
     <span class="input__label">{{label}}</span>
     <input 
       id="{{name}}" 
       value="{{value}}" 
-      class="input__field" 
+      class="
+        input__field
+        {{#if errorText}}
+          input__field--error
+        {{/if}}
+      " 
       name="{{name}}" 
       type="{{type}}" 
     />
