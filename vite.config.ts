@@ -2,7 +2,7 @@ import path from 'path'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  preview: {
+  server: {
     port: 3000,
   },
   resolve: {
