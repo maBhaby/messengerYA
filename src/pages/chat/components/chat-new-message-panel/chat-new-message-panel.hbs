@@ -1,12 +1,7 @@
 <footer class="chat-new-message">
   <form class="chat-new-message__form" action="">
     {{#> Button colorTheme="transparent"}}
-      <img 
-        src="{{images.pinIcon}}" 
-        alt="pin" 
-        height="34" 
-        width="32"
-      >
+    <img src="{{ images.pinIcon }}" alt="pin" height="34" width="32" />
     {{/Button}}
     <div>
       {{> MessageInput placeholder="Сообщение"}}
@@ -16,12 +11,7 @@
       colorTheme="blue" 
       className="chat-new-message__send_btn"
     }}
-      <img 
-        src="{{images.arrowIcon}}" 
-        alt="отправить новое сообщение" 
-        height="15" 
-        width="30"
-      >
+    <img src="{{ images.arrowIcon }}" alt="отправить новое сообщение" height="15" width="30" />
     {{/Button}}
   </form>
 </footer>

@@ -1,7 +1,7 @@
-export { default as ChatPage } from './chat.hbs?raw'
+export { default as ChatPage } from './chat.hbs?raw';
 
-import { canonImage } from '@static/images'
-import Handlebars from 'handlebars'
+import { canonImage } from '@static/images';
+import Handlebars from 'handlebars';
 
 Handlebars.registerHelper('chatList', () => {
   return [
@@ -18,8 +18,8 @@ Handlebars.registerHelper('chatList', () => {
       message: 'Круто',
       linkToChat: '/rap',
     },
-  ]
-})
+  ];
+});
 
 Handlebars.registerHelper('messagesList', () => {
   return [
@@ -56,5 +56,5 @@ Handlebars.registerHelper('messagesList', () => {
         },
       ],
     },
-  ]
-})
+  ];
+});

@@ -17,4 +17,4 @@ export const PASSWORD_FIELDS_VALUE = [
     value: 'pochta@yandex.ruasd',
     disabled: true,
   },
-]
+];
