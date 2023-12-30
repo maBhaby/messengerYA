@@ -2,6 +2,9 @@ import path from 'path'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  preview: {
+    port: 3000,
+  },
   resolve: {
     alias: [
       {
