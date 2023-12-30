@@ -2,6 +2,7 @@
   "name": "messengerya",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
