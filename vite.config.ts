@@ -6,8 +6,12 @@ export default defineConfig({
     alias: [
       {
         find: '@static',
-        replacement: path.resolve(__dirname, 'src', 'static')
-      }
-    ]
-  }
+        replacement: path.resolve(
+          __dirname,
+          'src',
+          'static'
+        ),
+      },
+    ],
+  },
 })

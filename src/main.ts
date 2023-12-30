@@ -54,18 +54,24 @@ const pages = {
       },
     },
   ],
-  'profile-edit': [Pages.ProfileEditPage, {
-    images: {
-      userChangeImage,
-      arrowIcon,
+  'profile-edit': [
+    Pages.ProfileEditPage,
+    {
+      images: {
+        userChangeImage,
+        arrowIcon,
+      },
     },
-  }],
-  'change-password': [Pages.ProfileChangePassword, {
-    images: {
-      userChangeImage,
-      arrowIcon,
+  ],
+  'change-password': [
+    Pages.ProfileChangePassword,
+    {
+      images: {
+        userChangeImage,
+        arrowIcon,
+      },
     },
-  }],
+  ],
 }
 
 Object.entries(AllAppElements).forEach(
@@ -74,7 +80,7 @@ Object.entries(AllAppElements).forEach(
   }
 )
 
-function initContent(source:any, context: any) {
+function initContent(source: any, context: any) {
   const container = document.getElementById('app')!
   container.innerHTML = Handlebars.compile(source)(context)
 }
@@ -83,13 +89,11 @@ function navigate(page: string) {
   //@ts-ignore
   const [source, context] = pages[page]
   initContent(source, context)
-  
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    navigate('login')
-  }
-)
+  navigate('login')
+})
 
 document.addEventListener('click', (e) => {
   //@ts-ignore

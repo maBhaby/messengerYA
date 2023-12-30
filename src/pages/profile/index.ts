@@ -7,4 +7,3 @@ import { USER_VALUE } from './consts'
 Handlebars.registerHelper('profileValue', () => {
   return USER_VALUE
 })
-

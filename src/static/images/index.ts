@@ -10,5 +10,5 @@ export {
   canonImage,
   arrowIcon,
   userChangeImage,
-  arrowWithoutLineIcon
+  arrowWithoutLineIcon,
 }
