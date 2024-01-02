@@ -30,7 +30,7 @@ export const USER_VALUE = [
   {
     label: 'Имя в чате',
     type: 'text',
-    name: 'first_name',
+    name: 'display_name',
     value: 'Иван',
     disabled: true,
   },
