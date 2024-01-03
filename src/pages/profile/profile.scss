@@ -1,0 +1,32 @@
+@use 'src/styles/global/mixins';
+
+.profile-page {
+  @include mixins.profiles-page-container;
+
+  &__header {
+    margin-bottom: 60px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__list {
+    width: 100%;
+
+    margin-bottom: 50px;
+
+    &_item {
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--color-light-gray);
+      }
+
+      &--links {
+        height: 35px;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}

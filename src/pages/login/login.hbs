@@ -1,0 +1,17 @@
+{{#> CenterLayout }}
+<div class="auth-page__wrapper">
+  <form class="auth-page__form">
+    {{#> Title tag="h1" size="20" weight="500" className="auth-page__title"}}Вход{{/Title}}
+    {{> BaseInput name="login" type="text" label="Логин" className="auth-page__input"}}
+    {{> BaseInput name="password" type="password" label="Пароль" className="auth-page__input"}}
+    <div class="auth-page__footer">
+      {{#> Button page="chat" size="full" colorTheme="blue"}}
+      Авторизоваться
+      {{/Button}}
+      {{#> Button page="registration" colorTheme="transparent" size="xs"}}
+      Нет аккаунта?
+      {{/Button}}
+    </div>
+  </form>
+</div>
+{{/CenterLayout }}

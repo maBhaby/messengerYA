@@ -1,0 +1,16 @@
+{{#> CenterLayout }}
+<div class="error-page">
+  {{#> Title tag="h1" className="visually-hidden"}}
+  Страница ошибки
+  {{/Title}}
+  {{#> Title tag="h2" size="40" weight="500" className="error-page__title"}}
+  {{ errorCode }}
+  {{/Title}}
+  <p class="error-page__desc">
+    {{ errorMessage }}
+  </p>
+  {{#> Button page="chat" colorTheme="transparent" size="xs"}}
+  Назад к чатам
+  {{/Button}}
+</div>
+{{/CenterLayout }}

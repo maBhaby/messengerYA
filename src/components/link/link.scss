@@ -1,0 +1,19 @@
+.link {
+  font-size: 16px;
+  line-height: 130%;
+  font-weight: 500;
+
+  &__color {
+    &-blue {
+      color: var(--color-blue);
+    }
+
+    &-red {
+      color: var(--color-red);
+    }
+
+    &-gray {
+      color: var(--color-gray);
+    }
+  }
+}

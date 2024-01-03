@@ -1,0 +1,23 @@
+.search-input {
+  position: relative;
+
+  &__icon {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  input {
+    font-size: 12px;
+    height: 32px;
+    border-radius: 5px;
+    background-color: var(--color-light-gray);
+
+    padding: 0 30px;
+
+    &::placeholder {
+      text-align: center;
+    }
+  }
+}

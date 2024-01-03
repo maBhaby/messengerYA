@@ -1,0 +1,33 @@
+@use 'src/styles/global/mixins';
+
+.reg-page {
+  &__wrapper {
+    @include mixins.reg-form;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    max-width: 320px;
+  }
+
+  &__input:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &__footer {
+    margin-top: 40px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+}

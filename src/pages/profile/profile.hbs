@@ -1,0 +1,37 @@
+{{#> ProfileLayout}}
+{{#> Title tag="h1" className="visually-hidden"}}
+Профиль
+{{/Title}}
+<div class="profile-page">
+  <div class="profile-page__header">
+    {{> ChangeAvatar}}
+    <span>
+      {{ userName }}
+    </span>
+  </div>
+  <ul class="profile-page__list">
+    {{#each (profileValue)}}
+    <li class="profile-page__list_item">
+      {{> UserValueRow}}
+    </li>
+    {{/each}}
+  </ul>
+  <ul class="profile-page__list">
+    <li class="profile-page__list_item profile-page__list_item--links">
+      {{#> Link page="profile-edit" color="blue"}}
+      Изменить данные
+      {{/Link}}
+    </li>
+    <li class="profile-page__list_item profile-page__list_item--links">
+      {{#> Link page="change-password" color="blue"}}
+      Изменить пароль
+      {{/Link}}
+    </li>
+    <li class="profile-page__list_item profile-page__list_item--links">
+      {{#> Link page="login" color="red"}}
+      Выйти
+      {{/Link}}
+    </li>
+  </ul>
+</div>
+{{/ProfileLayout}}

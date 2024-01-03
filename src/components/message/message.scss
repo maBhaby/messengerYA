@@ -1,0 +1,47 @@
+.message {
+  max-width: 420px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 130%;
+
+  &__type {
+    &--me {
+      padding: 10px;
+      background-color: var(--color-light-blue);
+      border-radius: 8px 8px 0px 8px;
+
+      .message__time {
+        color: var(--color-blue);
+      }
+    }
+
+    &--chat {
+      padding: 10px;
+      background-color: var(--color-message-gray);
+      border-radius: 0px 8px 8px 8px;
+
+      .message__time {
+        color: var(--color-gray);
+      }
+    }
+
+    &--image {
+      position: relative;
+    }
+  }
+
+  &__bottom {
+    margin-top: 5px;
+
+    &--image {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+  }
+
+  &__time {
+    font-size: 9px;
+    line-height: 1;
+  }
+}

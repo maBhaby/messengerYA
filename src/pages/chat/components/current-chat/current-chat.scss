@@ -1,0 +1,6 @@
+.current_chat {
+  display: grid;
+  grid-template-rows: var(--chat-panel-height) 1fr var(--chat-panel-height);
+
+  padding: 0 30px;
+}
