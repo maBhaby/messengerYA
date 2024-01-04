@@ -1,1 +1,1 @@
-export { default as CurrentChat } from './current-chat.hbs?raw'
+export { default as CurrentChat } from './current-chat.hbs?raw';

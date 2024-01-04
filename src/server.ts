@@ -5,7 +5,7 @@ const app = express()
 const PORT = 4000
 
 app.use(
-  express.static(path.resolve(__dirname, 'src', 'static'))
+  express.static(path.resolve(__dirname))
 )
 
 app.listen(PORT, function () {

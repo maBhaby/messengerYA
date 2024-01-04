@@ -1,1 +1,1 @@
-export { default as CenterLayout } from './center.hbs?raw'
+export { default as CenterLayout } from './center.hbs?raw';

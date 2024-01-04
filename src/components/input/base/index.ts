@@ -1,1 +1,1 @@
-export { default as BaseInput } from './base.hbs?raw'
+export { default as BaseInput } from './base.hbs?raw';

@@ -1,1 +1,1 @@
-export { default as SearchInput } from './search.hbs?raw'
+export { default as SearchInput } from './search.hbs?raw';

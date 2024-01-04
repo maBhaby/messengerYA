@@ -1,7 +1,7 @@
-export { default as ChatPage } from './chat.hbs?raw'
+export { default as ChatPage } from './chat.hbs?raw';
 
-import { canonImage } from '@static/images'
-import Handlebars from 'handlebars'
+import { canonImage } from '@static/images';
+import Handlebars from 'handlebars';
 
 Handlebars.registerHelper('chatList', () => {
   return [
@@ -10,16 +10,16 @@ Handlebars.registerHelper('chatList', () => {
       time: '10:49',
       message: 'Изображение',
       unreadMessages: 4,
-      linkToChat: '/test'
+      linkToChat: '/test',
     },
     {
       title: 'Киноклуб',
       time: 'Пт',
       message: 'Круто',
-      linkToChat: '/rap'
+      linkToChat: '/rap',
     },
-  ]
-})
+  ];
+});
 
 Handlebars.registerHelper('messagesList', () => {
   return [
@@ -29,15 +29,16 @@ Handlebars.registerHelper('messagesList', () => {
         {
           type: 'chat',
           time: '12:00',
-          message: 'Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.'
+          message:
+            'Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.',
         },
         {
           type: 'me',
           time: '12:20',
           message: 'ниче',
-          status: 'readed'
-        }
-      ]
+          status: 'readed',
+        },
+      ],
     },
     {
       date: '19 июня',
@@ -45,15 +46,15 @@ Handlebars.registerHelper('messagesList', () => {
         {
           type: 'chat',
           time: '12:00',
-          image: canonImage
+          image: canonImage,
         },
         {
           type: 'me',
           time: '12:20',
           message: 'Чее?!',
-          status: 'sended'
-        }
-      ]
-    }
-  ]
-})
+          status: 'sended',
+        },
+      ],
+    },
+  ];
+});

@@ -1,1 +1,1 @@
-export { default as ChangeAvatar } from './changeAvatar.hbs?raw'
+export { default as ChangeAvatar } from './changeAvatar.hbs?raw';

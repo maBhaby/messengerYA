@@ -1,4 +1,4 @@
-@use "src/styles/global/mixins";
+@use 'src/styles/global/mixins';
 
 .chat-item {
   display: flex;
@@ -23,7 +23,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 3px;
-    
+
     &_top {
       @include mixins.flex('sc');
     }
