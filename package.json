@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "build:preview": "tsc && vite build && vite preview",
     "prepare": "husky install",
-    "pretty": "prettier --write",
+    "pretty": "prettier --write src/**/*",
     "lint:fix": "eslint --fix . --quiet --ext .js,.ts",
     "csslint:fix": "stylelint --fix \"src/**/*.{css,less,sass,scss,sss}\"",
     "lint:staged": "lint-staged --relative"
