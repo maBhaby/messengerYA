@@ -1,9 +1,7 @@
 import Handlebars from 'handlebars';
 
-export { default as ProfilePage } from './profile.hbs?raw';
-
 import { USER_VALUE } from './consts';
+
+export { default as ProfilePage } from './profile.hbs?raw';
 // TODO - вынести хелпер
-Handlebars.registerHelper('profileValue', () => {
-  return USER_VALUE;
-});
+Handlebars.registerHelper('profileValue', () => USER_VALUE);
