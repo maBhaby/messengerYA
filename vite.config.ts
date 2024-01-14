@@ -15,6 +15,13 @@ export default defineConfig({
           'static'
         ),
       },
+      {
+        find: '@',
+        replacement: path.resolve(
+          __dirname,
+          'src'
+        ),
+      }
     ],
   },
 })

@@ -2,19 +2,24 @@
 import Handlebars from 'handlebars';
 import { nanoid } from 'nanoid';
 
+
 import EventBus from './EventBus';
 
-export type RefType = {
-  [key: string]: Element | Block<object>;
-};
+export type RefType = Record<string, HTMLElement | Block<object>>
 
-export interface BlockClass<P extends object, R extends RefType> extends Function {
-  // eslint-disable-next-line no-unused-vars
-  new (props: P): Block<P, R>;
+type BlockClassProps = {
+  [key: string]: any
+}
+
+export interface BlockClass<P extends object = BlockClassProps, R extends RefType = RefType> extends Function {
+  new (props?: P): Block<P, R>;
   componentName?: string;
 }
 
-class Block<Props extends object & { events?: any }, Refs extends RefType = RefType> {
+// eslint-disable-next-line no-undef
+type EventsProps = { events?: Record<string, EventListenerOrEventListenerObject> }
+
+class Block<Props extends object, Refs extends RefType = RefType> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -25,7 +30,7 @@ class Block<Props extends object & { events?: any }, Refs extends RefType = RefT
 
   public id = nanoid(6);
 
-  protected props: Props;
+  protected props: Props & EventsProps;
 
   protected refs: Refs = {} as Refs;
 
@@ -48,9 +53,7 @@ class Block<Props extends object & { events?: any }, Refs extends RefType = RefT
   }
 
   _addEvents() {
-    // const {events = {}} = this.props;
     const events = this.props?.events || {};
-
     Object.keys(events).forEach((eventName) => {
       this._element!.addEventListener(eventName, events[eventName]);
     });
@@ -117,6 +120,8 @@ class Block<Props extends object & { events?: any }, Refs extends RefType = RefT
   }
 
   _componentWillUnmount() {
+    // удаление ивентов
+
     this.componentWillUnmount();
   }
 
@@ -196,9 +201,7 @@ class Block<Props extends object & { events?: any }, Refs extends RefType = RefT
   }
 
   _makePropsProxy(props: any) {
-    // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
-    const self = this;
-
+    const self = this
     return new Proxy(props, {
       get(target, prop) {
         const value = target[prop];
@@ -221,11 +224,24 @@ class Block<Props extends object & { events?: any }, Refs extends RefType = RefT
     });
   }
 
-  show() {
+  public get value() {
+    if (this._element === null) {
+      throw new Error('Error: element non in DOM')
+    } 
+
+    try {
+      return this._element.querySelector('input')?.value
+    } catch {
+      return ''
+    }
+
+  }
+
+  public show() {
     this.getContent()!.style.display = 'block';
   }
 
-  hide() {
+  public hide() {
     this.getContent()!.style.display = 'none';
   }
 }

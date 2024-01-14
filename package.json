@@ -2,7 +2,7 @@
   "name": "messengerya",
   "private": true,
   "version": "0.0.0",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "start": "vite",
     "build": "tsc --noEmit && vite build",

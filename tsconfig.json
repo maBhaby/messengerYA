@@ -23,7 +23,8 @@
     "sourceMap": true,
     "strictNullChecks": true ,
     "paths": {
-      "@static/*": ["src/static/*"]
+      "@static/*": ["src/static/*"],
+      "@/*": ["src/*"]
     }
   },
   "include": ["src", "typings"]
