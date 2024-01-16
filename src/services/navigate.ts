@@ -3,7 +3,10 @@ import {
   RegistrationPageClass, 
   Page404, 
   Page500 ,
-  ProfilePageClass
+  ProfilePageClass,
+  ProfileChangePasswordClass,
+  ProfileEditPageClass,
+  ChatPageClass
 } from "@/pages";
 import { PageTypes } from "@/interfaces/common";
 import { BlockClass }  from "./Block";
@@ -13,7 +16,10 @@ const pages: Record<PageTypes, BlockClass> = {
   registration: RegistrationPageClass,
   page404: Page404,
   page500: Page500,
-  profile: ProfilePageClass
+  profile: ProfilePageClass,
+  "change-password": ProfileChangePasswordClass,
+  "profile-edit": ProfileEditPageClass,
+  chat: ChatPageClass
 }
 
 function initContent(rootNode: HTMLElement, page: PageTypes) {

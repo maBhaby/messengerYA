@@ -1,8 +1,12 @@
-export { BaseInput, SearchInput, MessageInput } from './input';
-export { Button } from './button';
-export { Title } from './title';
+export { BaseInput, SearchInput, MessageInput,
+  BaseInputClass,
+  SearchInputClass,
+  MessageInputClass
+} from './input';
+export { Button, ButtonClass } from './button';
+export { Title, TitleClass } from './title';
 export { ChangeAvatar, ChangeAvatarClass } from './changeAvatar';
 export { UserValueRow, UserValueRowClass } from './userValueRow';
-export { Link } from './link';
-export { Message } from './message';
+export { Link, LinkClass } from './link';
+export { Message, MessageClass } from './message';
 export { ErrorPageContent } from './errorPageContent'

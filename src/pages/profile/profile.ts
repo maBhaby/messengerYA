@@ -10,7 +10,7 @@ export class ProfilePage extends Block<any> {
   protected render() {
     const { userName } = this.props
     return (`
-
+      {{#> ProfileLayout }}
         {{{ Title tag="h1" className="visually-hidden" text="Профиль"}}}
         <div class="profile-page">
           <div class="profile-page__header">
@@ -44,7 +44,7 @@ export class ProfilePage extends Block<any> {
             </li>
           </ul>
         </div>
-
+      {{/ProfileLayout}}
     `)
   }
 }
