@@ -19,7 +19,7 @@ export class LoginPage extends Block<IProps, IRefs> {
   constructor () {
     super({
       validate: {
-          login: () => {}
+          login: () => {console.log('asdasd')}
       },
       onLogin: (event) => {
           event.preventDefault();
@@ -50,7 +50,15 @@ export class LoginPage extends Block<IProps, IRefs> {
           <div class="auth-page__wrapper">
             <form  class="auth-page__form">
               {{{ Title tag="h1" size="20" weight="500" className="auth-page__title" text="Вход"}}}
-              {{{ BaseInput ref="login" name="login" type="text" label="Логин" className="auth-page__input"}}}
+              {{{ 
+                  BaseInput 
+                  ref="login" 
+                  name="login" 
+                  type="text" 
+                  label="Логин" 
+                  validate=validate.login 
+                  className="auth-page__input"
+              }}}
               {{{ BaseInput ref="password" name="password" type="password" label="Пароль" className="auth-page__input"}}}
               <div class="auth-page__footer">
                 {{{ Button 

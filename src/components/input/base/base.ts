@@ -1,47 +1,56 @@
 import Block from '@/services/Block';
 
-import { clsx } from '@/utils/clsx';
+
 
 interface IProps {
   className?: string
   name: string
   label: string
-  value?: string | number
+  valueInput?: string | number
   errorText?: string
   type?: 'text' | 'password'
+  validate: (el?: string) => string
+  onBlur: (e: Event) => void
 }
 
 export class BaseInput extends Block<IProps> {
   constructor(props: IProps) {
-    super(props)
+    super({
+      ...props,
+      onBlur: () => this.validate()
+    })
   }
+
+  private validate() {
+    const { value } = this;
+    const error = this.props.validate?.(value);
+    if (error) {
+        this.setProps({ errorText: error });
+        return false;
+    }
+    this.setProps({ errorText: undefined });
+    return true;
+}
 
   protected render() {
     const {
       name, 
       label, 
-      value = '', 
       className = '',
       errorText= '',
-      type = 'text'
+      type
     } = this.props
+    // debugger
     return (`
       <div class="input ${ className }">
         <label for="${ name }" class="input__wrap">
           <span class="input__label">${ label }</span>
-          <input
-            id="${ name }"
-            value="${ value }"
-            class="
-            ${
-              clsx('input__field', {
-                [`input__field--error`]: Boolean(errorText)
-              })
-            }
-            "
-            name="${ name }"
-            type="${ type }"
-          />
+          {{{Input 
+            name="${name}" 
+            errorText="${errorText}" 
+            type="${type}"
+            onBlur=onBlur
+          }}}
         </label>
         ${
           errorText ? `

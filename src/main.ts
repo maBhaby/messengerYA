@@ -14,7 +14,8 @@ import {
   ChangeAvatarClass, 
   MessageInputClass, 
   SearchInputClass ,
-  MessageClass
+  MessageClass,
+  Input
 } from './components';
 
 import {
@@ -52,6 +53,7 @@ registerComponent('Link', LinkClass)
 registerComponent('MessageInput', MessageInputClass)
 registerComponent('SearchInput', SearchInputClass)
 registerComponent('Message', MessageClass)
+registerComponent('Input', Input)
 
 registerComponent('ChatItem', ChatItemClass)
 registerComponent('ChatList', ChatListClass)

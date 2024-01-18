@@ -1,7 +1,8 @@
 export { BaseInput, SearchInput, MessageInput,
   BaseInputClass,
   SearchInputClass,
-  MessageInputClass
+  MessageInputClass,
+  Input
 } from './input';
 export { Button, ButtonClass } from './button';
 export { Title, TitleClass } from './title';
