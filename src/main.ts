@@ -15,7 +15,8 @@ import {
   MessageInputClass, 
   SearchInputClass ,
   MessageClass,
-  Input
+  Input,
+  ErrorLine
 } from './components';
 
 import {
@@ -34,7 +35,7 @@ import { LinkClass } from './components/link';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  navigate("login");
+  navigate("chat");
 });
 
 Object.entries(Layouts).forEach(([keys, comp]) => {
@@ -42,6 +43,7 @@ Object.entries(Layouts).forEach(([keys, comp]) => {
 })
 
 
+registerComponent('ErrorLine', ErrorLine)
 registerComponent('Button', ButtonClass)
 registerComponent('Title', TitleClass)
 registerComponent('CenterLayout', CenterLayoutClass)

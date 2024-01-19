@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid';
 
 
 import EventBus from './EventBus';
+import { isDeepEqual, deepEqual } from '@/utils/deepEqual';
 
 export type RefType = Record<string, HTMLElement | Block<object>>
 
@@ -98,10 +99,8 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     }
   }
 
-  protected componentDidUpdate(oldProps: any, newProps: any) {
-    console.log(oldProps, newProps, this);
-
-    return true;
+  protected componentDidUpdate(oldProps: Props, newProps: Props) {
+    return !isDeepEqual<Props>(oldProps as { [index: string]: Props }, newProps as { [index: string]: Props });
   }
 
   /**
@@ -213,8 +212,6 @@ class Block<Props extends object, Refs extends RefType = RefType> {
         // eslint-disable-next-line no-param-reassign
         target[prop] = value;
 
-        // Запускаем обновление компоненты
-        // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },
@@ -230,7 +227,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     } 
 
     try {
-      return this._element.querySelector('input')?.value
+      return this._element && (<HTMLInputElement>this._element).value  || this._element.querySelector('input')?.value 
     } catch {
       return ''
     }

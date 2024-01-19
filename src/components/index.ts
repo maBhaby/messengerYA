@@ -1,3 +1,5 @@
+export { ErrorLine } from './error-line';
+
 export { BaseInput, SearchInput, MessageInput,
   BaseInputClass,
   SearchInputClass,

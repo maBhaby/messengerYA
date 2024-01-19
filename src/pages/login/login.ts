@@ -1,10 +1,11 @@
-import { BaseInput } from "@/components/input/base/base";
 import Block, { RefType } from "@/services/Block";
+import { BaseInput } from "@/components/input/base/base";
 import { navigate } from "@/services/navigate";
+import { validateLogin } from "@/utils/validations/login";
 
 interface IProps {
   validate: {
-    login: () => void
+    login: (val: string) => void
   },
   onLogin: (e: Event) => void
   handleOpenRegPage: () => void
@@ -19,12 +20,12 @@ export class LoginPage extends Block<IProps, IRefs> {
   constructor () {
     super({
       validate: {
-          login: () => {console.log('asdasd')}
+          login: validateLogin
       },
       onLogin: (event) => {
           event.preventDefault();
-          const login =  this.refs.login.value;
-          const password =  this.refs.password.value;
+          const login = this.refs.login.getValue();
+          const password = this.refs.password.getValue();
 
           if(!login) {
               return;
@@ -42,7 +43,7 @@ export class LoginPage extends Block<IProps, IRefs> {
   })
   }
 
-   render() {
+    render() {
     return (
       `
       <main>

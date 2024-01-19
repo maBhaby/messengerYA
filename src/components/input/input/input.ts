@@ -8,6 +8,8 @@ interface IProps {
   errorText?: string
   type?: 'text' | 'password'
   onBlur: (e:Event) => void
+  classNameFirst?: string
+  placeholder?: string
 }
 
 export class Input extends Block<IProps> {
@@ -24,9 +26,10 @@ export class Input extends Block<IProps> {
   protected render() {
     const {
       name, 
-      valueInput, 
       type = 'text',
       errorText= '',
+      classNameFirst = 'input__field',
+      placeholder
     } = this.props
     // debugger
     return (`
@@ -34,11 +37,14 @@ export class Input extends Block<IProps> {
         id="${ name }"
         class="
         ${
-          clsx('input__field', {
+          clsx(classNameFirst, {
             [`input__field--error`]: Boolean(errorText)
           })
         }
         "
+        ${
+          placeholder && `placeholder='${placeholder}'`
+        }
         name="${ name }"
         type="${ type }"
       />

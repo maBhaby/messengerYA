@@ -1,17 +1,39 @@
-import Block from "@/services/Block";
+import Block, { RefType } from "@/services/Block";
+import { MessageClass } from "@/components";
 import { arrowIcon, pinIcon } from "@static/images";
+import { validateMessage } from "@/utils/validations/login";
 
 interface IProps {
   imgPin: string
   imgArrow: string
+  onSubmit: (e: Event) => void
+  validate: {
+    message: (val: string) => void
+  }
 }
 
-export class ChatNewMessagePanel extends Block<IProps> {
+interface IRefs extends RefType {
+  messageInput: MessageClass
+}
+
+export class ChatNewMessagePanel extends Block<IProps, IRefs> {
 
   constructor() {
     super({
       imgPin: pinIcon,
-      imgArrow: arrowIcon
+      imgArrow: arrowIcon,
+      validate: {
+        message: validateMessage
+      },
+      onSubmit: (event) => {
+        event.preventDefault()
+
+        const valueMessage = this.refs.messageInput.value
+
+        if (valueMessage) {
+          console.log(valueMessage);
+        }
+      }
     })
   }
 
@@ -29,12 +51,19 @@ export class ChatNewMessagePanel extends Block<IProps> {
             />
           ' }}}
           <div>
-            {{{ MessageInput placeholder="Сообщение" name="message" }}}
+            {{{ 
+              MessageInput 
+              placeholder="Сообщение" 
+              name="message" 
+              ref="messageInput" 
+              onBlur=validate.message
+            }}}
           </div>
           {{{
             Button 
             colorTheme="blue" 
             className="chat-new-message__send_btn"
+            onClick=onSubmit
             text='
               <img 
                 src="${imgArrow}" 
