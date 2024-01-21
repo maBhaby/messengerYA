@@ -1,3 +1,3 @@
-export { default as Button } from './button.hbs?raw';
+export { default as ButtonView } from './button.hbs?raw';
 
-export { Button as ButtonClass } from './button'
+export { Button } from './button';

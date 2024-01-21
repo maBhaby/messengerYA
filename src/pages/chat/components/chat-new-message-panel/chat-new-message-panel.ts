@@ -1,50 +1,49 @@
-import Block, { RefType } from "@/services/Block";
-import { MessageClass } from "@/components";
-import { arrowIcon, pinIcon } from "@static/images";
-import { validateMessage } from "@/utils/validations/login";
+import Block, { RefType } from '@/services/Block';
+import { MessageClass } from '@/components';
+import { arrowIcon, pinIcon } from '@static/images';
+import { validateMessage } from '@/utils/validations/login';
 
 interface IProps {
-  imgPin: string
-  imgArrow: string
-  onSubmit: (e: Event) => void
+  imgPin: string;
+  imgArrow: string;
+  onSubmit: (e: Event) => void;
   validate: {
-    message: (val: string) => void
-  }
+    message: (val: string) => void;
+  };
 }
 
 interface IRefs extends RefType {
-  messageInput: MessageClass
+  messageInput: MessageClass;
 }
 
 export class ChatNewMessagePanel extends Block<IProps, IRefs> {
-
   constructor() {
     super({
       imgPin: pinIcon,
       imgArrow: arrowIcon,
       validate: {
-        message: validateMessage
+        message: validateMessage,
       },
       onSubmit: (event) => {
-        event.preventDefault()
+        event.preventDefault();
 
-        const valueMessage = this.refs.messageInput.value
+        const valueMessage = this.refs.messageInput.value;
 
         if (valueMessage) {
           console.log(valueMessage);
         }
-      }
-    })
+      },
+    });
   }
 
   protected render() {
-    const { imgArrow, imgPin } = this.props
-    return (`
+    const { imgArrow, imgPin } = this.props;
+    return `
       <footer class="chat-new-message">
         <form class="chat-new-message__form" action="">
           {{{ Button colorTheme="transparent" text='
             <img 
-              src="${ imgPin }" 
+              src="${imgPin}" 
               alt="pin" 
               height="34" 
               width="32" 
@@ -56,7 +55,7 @@ export class ChatNewMessagePanel extends Block<IProps, IRefs> {
               placeholder="Сообщение" 
               name="message" 
               ref="messageInput" 
-              onBlur=validate.message
+              validate=validate.message
             }}}
           </div>
           {{{
@@ -75,6 +74,6 @@ export class ChatNewMessagePanel extends Block<IProps, IRefs> {
           }}}
         </form>
       </footer>
-    `)
+    `;
   }
 }

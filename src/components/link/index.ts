@@ -1,3 +1,3 @@
-export { default as Link } from './link.hbs?raw';
+export { default as LinkView } from './link.hbs?raw';
 
-export { Link as LinkClass } from './link'
+export { Link } from './link';

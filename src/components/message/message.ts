@@ -1,27 +1,29 @@
-import Block from "@/services/Block";
+import Block from '@/services/Block';
 
-import { clsx } from "@/utils/clsx";
+import { clsx } from '@/utils/clsx';
 
 interface IProps {
-  image?: string
-  message?: string
-  time: string
-  type: string
-  className?: string
+  image?: string;
+  message?: string;
+  time: string;
+  type: string;
+  className?: string;
 }
 
 export class Message extends Block<IProps> {
-  constructor (props: IProps) {
-    super(props)
+  constructor(props: IProps) {
+    super(props);
   }
 
   protected render() {
-    const { image, className, time, message, type } = this.props
-    return (`
-      ${image ? `
+    const { image, className, time, message, type } = this.props;
+    return `
+      ${
+        image
+          ? `
         <div class='${clsx('message', {
           'message__type--image': true,
-          [`${className}`]: Boolean(className)
+          [`${className}`]: Boolean(className),
         })}'>
           <img 
             src='${image}' 
@@ -35,11 +37,12 @@ export class Message extends Block<IProps> {
             </div>
           </div>
         </div>
-      ` : `
+      `
+          : `
         <div 
           class='${clsx('message', {
             [`message__type--${type}`]: Boolean(type),
-            [`${className}`]: Boolean(className)
+            [`${className}`]: Boolean(className),
           })}'>
           <p>
             ${message}
@@ -50,7 +53,8 @@ export class Message extends Block<IProps> {
             </div>
           </div>
         </div>
-      `}
-    `)
+      `
+      }
+    `;
   }
 }

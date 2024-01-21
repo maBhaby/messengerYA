@@ -1,14 +1,13 @@
-import Block from "@/services/Block";
+import Block from '@/services/Block';
 
 export class CurrentChat extends Block<any> {
-  
   protected render() {
-    return (`
+    return `
       <section class="current_chat">
         {{{ ChatHeader }}}
         {{{ ChatMessages }}}
         {{{ ChatNewMessagePanel }}}
       </section>
-    `)
+    `;
   }
 }

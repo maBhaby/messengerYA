@@ -1,20 +1,19 @@
-import Block from "@/services/Block";
-import { userChangeImage } from "@static/images";
-
+import Block from '@/services/Block';
+import { userChangeImage } from '@static/images';
 
 interface IProps {
-  image: string
+  image: string;
 }
 
 export class ChangeAvatar extends Block<IProps> {
   constructor(props: IProps) {
-    super(props)
+    super(props);
   }
 
   protected render() {
-    const { image = userChangeImage } = this.props
+    const { image = userChangeImage } = this.props;
 
-    return (`
+    return `
     <button class='change-avatar'>
       <img 
         src="${image}"
@@ -30,6 +29,6 @@ export class ChangeAvatar extends Block<IProps> {
           </p>
         </div>
       </button>
-    `)
+    `;
   }
 }

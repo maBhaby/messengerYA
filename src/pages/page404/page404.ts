@@ -1,16 +1,16 @@
-import Block from "@/services/Block";
+import Block from '@/services/Block';
 
 export class Page404 extends Block<object> {
-  constructor () {
-    super({})
+  constructor() {
+    super({});
   }
 
   protected render() {
-    return (`
+    return `
       {{{ ErrorPageContent 
         errorCode="404" 
         errorMessage="Не туда попали" 
       }}}
-    `)
+    `;
   }
 }

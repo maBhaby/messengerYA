@@ -23,4 +23,9 @@
       color: var(--color-gray);
     }
   }
+
+  &__err-line {
+    display: flex;
+    justify-content: flex-end;
+  }
 }

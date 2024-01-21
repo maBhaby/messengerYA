@@ -1,20 +1,20 @@
-import Block from "@/services/Block";
-import { arrowWithoutLineIcon } from "@static/images";
+import Block from '@/services/Block';
+import { arrowWithoutLineIcon } from '@static/images';
 
 interface IProps {
-  imageLink: string
+  imageLink: string;
 }
 
 export class SearchPanel extends Block<IProps> {
   constructor() {
     super({
-      imageLink: arrowWithoutLineIcon
-    })
+      imageLink: arrowWithoutLineIcon,
+    });
   }
 
   protected render() {
-    const { imageLink } = this.props
-    return (`
+    const { imageLink } = this.props;
+    return `
       <div class="search-panel">
         <div class="search-panel__top">
           {{{ Link 
@@ -38,6 +38,6 @@ export class SearchPanel extends Block<IProps> {
           </form>
         </search>
       </div>
-    `)
+    `;
   }
 }

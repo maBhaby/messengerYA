@@ -18,6 +18,7 @@
     "import/no-unresolved" : ["off"],
     "no-underscore-dangle": "off",
     "class-methods-use-this":"off",
+    "no-param-reassign": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {
@@ -42,6 +43,10 @@
           ".js",
           ".ts"
         ]
+      },
+      "alias": {
+        "map": [["@", "./src"], ["@static", "./src", "./src/static"]],
+        "extensions": [".ts", ".json"]
       }
     },
     "import/ignore": [

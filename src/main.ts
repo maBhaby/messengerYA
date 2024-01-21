@@ -1,66 +1,24 @@
 import Handlebars from 'handlebars';
 
-import './styles/index.scss';
+import * as Layouts from './layouts';
+import * as MainComp from './components';
+import * as ChatComp from './pages/chat/components';
 
 import { registerComponent } from './services/registerComponent';
-import { ButtonClass } from './components/button';
-import { BaseInputClass } from './components/input/base';
-import { CenterLayoutClass } from './layouts/center';
-import * as Layouts from './layouts';
-import { TitleClass } from './components/title';
-import { 
-  ErrorPageContent, 
-  UserValueRowClass, 
-  ChangeAvatarClass, 
-  MessageInputClass, 
-  SearchInputClass ,
-  MessageClass,
-  Input,
-  ErrorLine
-} from './components';
-
-import {
-  ChatItemClass,
-  ChatListClass,
-  SearchPanelClass,
-  CurrentChatClass,
-  ChatHeaderClass,
-  ChatNewMessagePanelClass,
-  ChatMessagesClass,
-} from './pages/chat/components'
-
 import { navigate } from './services/navigate';
-import { LinkClass } from './components/link';
 
+import Block from './services/Block';
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  navigate("chat");
-});
+import './styles/index.scss';
 
 Object.entries(Layouts).forEach(([keys, comp]) => {
-  Handlebars.registerPartial(keys, comp)
-})
+  Handlebars.registerPartial(keys, comp);
+});
 
+Object.entries({ ...MainComp, ...ChatComp }).forEach(([name, comp]) => {
+  registerComponent(name, comp as typeof Block);
+});
 
-registerComponent('ErrorLine', ErrorLine)
-registerComponent('Button', ButtonClass)
-registerComponent('Title', TitleClass)
-registerComponent('CenterLayout', CenterLayoutClass)
-registerComponent('BaseInput', BaseInputClass)
-registerComponent('ErrorPageContent', ErrorPageContent)
-registerComponent('UserValueRow', UserValueRowClass)
-registerComponent('ChangeAvatar', ChangeAvatarClass)
-registerComponent('Link', LinkClass)
-registerComponent('MessageInput', MessageInputClass)
-registerComponent('SearchInput', SearchInputClass)
-registerComponent('Message', MessageClass)
-registerComponent('Input', Input)
-
-registerComponent('ChatItem', ChatItemClass)
-registerComponent('ChatList', ChatListClass)
-registerComponent('SearchPanel', SearchPanelClass)
-registerComponent('CurrentChat', CurrentChatClass)
-registerComponent('ChatHeader', ChatHeaderClass)
-registerComponent('ChatNewMessagePanel', ChatNewMessagePanelClass)
-registerComponent('ChatMessages', ChatMessagesClass)
+document.addEventListener('DOMContentLoaded', () => {
+  navigate('change-password');
+});

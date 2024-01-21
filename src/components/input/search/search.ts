@@ -1,19 +1,18 @@
-import Block from "@/services/Block";
+import Block from '@/services/Block';
 
 interface IProps {
-  name: string 
+  name: string;
 }
 
 export class SearchInput extends Block<IProps> {
-
   constructor(props: IProps) {
-    super(props)
+    super(props);
   }
 
-  protected render () {
-    const {name} = this.props
+  protected render() {
+    const { name } = this.props;
 
-    return (`
+    return `
       <div class='search-input'>
         <div class='search-input__icon'>
           <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'>
@@ -27,6 +26,6 @@ export class SearchInput extends Block<IProps> {
         </div>
         <input type='text' name='${name}' placeholder='Поиск' />
       </div>
-    `)
+    `;
   }
 }

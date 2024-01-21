@@ -1,9 +1,8 @@
-import Block from "@/services/Block";
+import Block from '@/services/Block';
 
 export class ChatMessages extends Block {
-
   protected render() {
-    return (`
+    return `
     <div class="chat-messages">
       {{#each (messagesList)}}
       <div class="chat-messages__story">
@@ -28,6 +27,6 @@ export class ChatMessages extends Block {
       </div>
       {{/each}}
     </div>
-    `)
+    `;
   }
 }

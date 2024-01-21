@@ -1,3 +1,3 @@
-export { default as ChatMessages } from './chat-messages.hbs?raw';
+export { default as ChatMessagesView } from './chat-messages.hbs?raw';
 
-export { ChatMessages as ChatMessagesClass } from './chat-messages';
+export { ChatMessages } from './chat-messages';

@@ -1,4 +1,4 @@
-export { BaseInput, BaseInputClass } from './base';
-export { SearchInput, SearchInputClass } from './search';
-export { MessageInput, MessageInputClass } from './message';
-export { Input } from './input'
+export { BaseInput } from './base';
+export { SearchInput } from './search';
+export { MessageInput } from './message';
+export { Input } from './input';

@@ -1,8 +1,8 @@
-import Block from "@/services/Block";
+import Block from '@/services/Block';
 
 export class ChatList extends Block {
   protected render() {
-    return (`
+    return `
       <nav class="chat-list">
         <ul class="chat-list__list">
           {{#each (chatList)}}
@@ -18,7 +18,6 @@ export class ChatList extends Block {
           {{/each}}
         </ul>
       </nav>
-    `)
-  } 
+    `;
+  }
 }
-

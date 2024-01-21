@@ -1,3 +1,3 @@
-export { default as Message } from './message.hbs?raw';
+export { default as MessageView } from './message.hbs?raw';
 
-export { Message as MessageClass } from './message';
+export { Message } from './message';

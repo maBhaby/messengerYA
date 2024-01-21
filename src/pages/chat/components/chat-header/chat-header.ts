@@ -1,23 +1,23 @@
-import Block from "@/services/Block";
+import Block from '@/services/Block';
 
 interface IProps {
-  chatName: string
+  chatName: string;
 }
 
 export class ChatHeader extends Block<IProps> {
   constructor() {
     super({
-      chatName: 'Вадим'
-    })
+      chatName: 'Вадим',
+    });
   }
 
   protected render() {
-    const {chatName} = this.props
-    return (`
+    const { chatName } = this.props;
+    return `
       <header class="chat-header">
         <div class="chat-header__left">
           <div class="chat-header__thumbnail"></div>
-          <h3 class="chat-header__title">${ chatName }</h3>
+          <h3 class="chat-header__title">${chatName}</h3>
         </div>
         <div>
           {{{ Button 
@@ -40,6 +40,6 @@ export class ChatHeader extends Block<IProps> {
           }}}
         </div>
       </header>
-    `)
+    `;
   }
 }

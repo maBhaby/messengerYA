@@ -1,22 +1,22 @@
-import Block from "@/services/Block";
+import Block from '@/services/Block';
 
 export class ProfilePage extends Block<any> {
   constructor() {
     super({
-      userName: 'asd'
-    })
+      userName: 'asd',
+    });
   }
 
   protected render() {
-    const { userName } = this.props
-    return (`
+    const { userName } = this.props;
+    return `
       {{#> ProfileLayout }}
         {{{ Title tag="h1" className="visually-hidden" text="Профиль"}}}
         <div class="profile-page">
           <div class="profile-page__header">
             {{{ ChangeAvatar }}}
             <span>
-              ${ userName }
+              ${userName}
             </span>
           </div>
           <ul class="profile-page__list">
@@ -24,7 +24,7 @@ export class ProfilePage extends Block<any> {
             <li class="profile-page__list_item">
               {{{ UserValueRow 
                 value=this.value 
-                disabled=this.disabled 
+                disabled=true
                 type=this.type 
                 name=this.name
                 label=this.label
@@ -45,6 +45,6 @@ export class ProfilePage extends Block<any> {
           </ul>
         </div>
       {{/ProfileLayout}}
-    `)
+    `;
   }
 }

@@ -1,64 +1,71 @@
-import { BaseInput } from "@/components/input/base/base";
-import Block, { RefType } from "@/services/Block";
-import { navigate } from "@/services/navigate";
-import { validateEmail, validateLogin, validateName, validatePassword, validatePhone } from "@/utils/validations/login";
+import { BaseInput } from '@/components/input/base/base';
+import Block, { RefType } from '@/services/Block';
+import { navigate } from '@/services/navigate';
+import {
+  validateEmail,
+  validateLogin,
+  validateName,
+  validatePassword,
+  validatePhone,
+} from '@/utils/validations/login';
 
-type TValFunc = (val: string) => void
+type TValFunc = (val: string) => void;
 
 interface IProps {
   validate: {
-    login: TValFunc
-    email: TValFunc
-    password: TValFunc
-    phone: TValFunc
-    repeat_password: TValFunc
-    name: TValFunc
-  }
-  onSubmit: (e: Event) => void
-  handleRedirectToLogin: () => void
+    login: TValFunc;
+    email: TValFunc;
+    password: TValFunc;
+    phone: TValFunc;
+    repeat_password: TValFunc;
+    name: TValFunc;
+  };
+  onSubmit: (e: Event) => void;
+  handleRedirectToLogin: () => void;
 }
 
 interface IRefs extends RefType {
-  email: BaseInput
-  login: BaseInput
-  first_name: BaseInput
-  second_name: BaseInput
-  phone: BaseInput
-  password: BaseInput
-  repeat_password: BaseInput
+  email: BaseInput;
+  login: BaseInput;
+  first_name: BaseInput;
+  second_name: BaseInput;
+  phone: BaseInput;
+  password: BaseInput;
+  repeat_password: BaseInput;
 }
 
 export class RegistrationPage extends Block<IProps, IRefs> {
-  constructor () {
+  constructor() {
     super({
       validate: {
-          login: validateLogin,
-          email: validateEmail,
-          password: validatePassword,
-          phone: validatePhone,
-          repeat_password: validatePassword,
-          name: validateName
+        login: validateLogin,
+        email: validateEmail,
+        password: validatePassword,
+        phone: validatePhone,
+        repeat_password: validatePassword,
+        name: validateName,
       },
       onSubmit: (event) => {
         event.preventDefault();
         const allValue = Object.values(this.refs).map((el) => {
           if (el instanceof BaseInput) {
-            return el.getValue()
-          } return null
-        })
+            return el.getValue();
+          }
+          return null;
+        });
         if (!allValue.includes(null)) {
           console.log(...allValue);
         }
       },
       handleRedirectToLogin: () => {
-        navigate("login")
-        this.hide()
-      }
-    })
+        navigate('login');
+        this.hide();
+      },
+    });
   }
 
-   render() {
-    return (`
+  render() {
+    return `
       <main>
         <section class="center-layout">
           <div class="reg-page__wrapper">
@@ -147,7 +154,6 @@ export class RegistrationPage extends Block<IProps, IRefs> {
           </div>
         </section class="center-layout">
       <main>
-    `)
+    `;
   }
-  
 }

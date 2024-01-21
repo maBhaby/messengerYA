@@ -2,23 +2,24 @@
 import Handlebars from 'handlebars';
 import { nanoid } from 'nanoid';
 
+import { isDeepEqual } from '@/utils/deepEqual';
 
 import EventBus from './EventBus';
-import { isDeepEqual, deepEqual } from '@/utils/deepEqual';
 
-export type RefType = Record<string, HTMLElement | Block<object>>
+export type RefType = Record<string, HTMLElement | Block<object>>;
 
 type BlockClassProps = {
-  [key: string]: any
-}
+  [key: string]: any;
+};
 
-export interface BlockClass<P extends object = BlockClassProps, R extends RefType = RefType> extends Function {
+export interface BlockClass<P extends object = BlockClassProps, R extends RefType = RefType>
+  extends Function {
   new (props?: P): Block<P, R>;
   componentName?: string;
 }
 
 // eslint-disable-next-line no-undef
-type EventsProps = { events?: Record<string, EventListenerOrEventListenerObject> }
+type EventsProps = { events?: Record<string, EventListenerOrEventListenerObject> };
 
 class Block<Props extends object, Refs extends RefType = RefType> {
   static EVENTS = {
@@ -74,18 +75,14 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  protected init() {
-    console.log('init', this);
-  }
+  protected init() {}
 
   _componentDidMount() {
     this._checkInDom();
     this.componentDidMount();
   }
 
-  componentDidMount() {
-    console.log('componentDidMount', this);
-  }
+  componentDidMount() {}
 
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
@@ -100,13 +97,12 @@ class Block<Props extends object, Refs extends RefType = RefType> {
   }
 
   protected componentDidUpdate(oldProps: Props, newProps: Props) {
-    return !isDeepEqual<Props>(oldProps as { [index: string]: Props }, newProps as { [index: string]: Props });
+    return !isDeepEqual<Props>(
+      oldProps as { [index: string]: Props },
+      newProps as { [index: string]: Props }
+    );
   }
 
-  /**
-   * Хелпер, который проверяет, находится ли элемент в DOM дереве
-   * И есть нет, триггерит событие COMPONENT_WILL_UNMOUNT
-   */
   _checkInDom() {
     const elementInDOM = document.body.contains(this._element);
 
@@ -119,14 +115,10 @@ class Block<Props extends object, Refs extends RefType = RefType> {
   }
 
   _componentWillUnmount() {
-    // удаление ивентов
-
     this.componentWillUnmount();
   }
 
   componentWillUnmount() {
-    console.log(this);
-
     return true;
   }
 
@@ -181,8 +173,6 @@ class Block<Props extends object, Refs extends RefType = RefType> {
   }
 
   protected render(): string {
-    console.log(this);
-
     return '';
   }
 
@@ -200,7 +190,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
   }
 
   _makePropsProxy(props: any) {
-    const self = this
+    const self = this;
     return new Proxy(props, {
       get(target, prop) {
         const value = target[prop];
@@ -223,15 +213,17 @@ class Block<Props extends object, Refs extends RefType = RefType> {
 
   public get value() {
     if (this._element === null) {
-      throw new Error('Error: element non in DOM')
-    } 
-
-    try {
-      return this._element && (<HTMLInputElement>this._element).value  || this._element.querySelector('input')?.value 
-    } catch {
-      return ''
+      throw new Error('Error: element non in DOM');
     }
 
+    try {
+      return (
+        (this._element && (<HTMLInputElement>this._element).value) ||
+        this._element.querySelector('input')?.value
+      );
+    } catch {
+      return '';
+    }
   }
 
   public show() {

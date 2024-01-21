@@ -1,9 +1,8 @@
-import Block from "@/services/Block";
+import Block from '@/services/Block';
 
 export class ChatPage extends Block<any> {
-
   protected render() {
-    return(`
+    return `
       {{#> ChatLayout}}
         <div class="chat-page">
           <aside class="chat-page__chat_list">
@@ -13,6 +12,6 @@ export class ChatPage extends Block<any> {
           {{{ CurrentChat}}}
         </div>
       {{/ChatLayout}}
-    `)
+    `;
   }
 }

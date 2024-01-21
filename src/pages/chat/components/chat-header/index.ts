@@ -1,3 +1,3 @@
-export { default as ChatHeader } from './chat-header.hbs?raw';
+export { default as ChatHeaderView } from './chat-header.hbs?raw';
 
-export { ChatHeader as ChatHeaderClass } from './chat-header';
+export { ChatHeader } from './chat-header';

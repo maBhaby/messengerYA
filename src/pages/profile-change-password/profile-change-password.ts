@@ -1,18 +1,38 @@
-import Block from "@/services/Block";
+import { UserValueRow } from '@/components';
+import Block, { RefType } from '@/services/Block';
 
 interface IProps {
-  text: string
+  text: string;
+  onSubmit: (e: Event) => void;
 }
 
-export class ProfileChangePassword extends Block<IProps> {
+interface IRefs extends RefType {
+  oldPassword: UserValueRow;
+  newPassword: UserValueRow;
+  repeatNewPassword: UserValueRow;
+}
+
+export class ProfileChangePassword extends Block<IProps, IRefs> {
   constructor() {
     super({
-      text: 'test'
-    })
+      text: 'test',
+      onSubmit: (e) => {
+        e.preventDefault();
+        const allValue = Object.values(this.refs).map((el) => {
+          if (el instanceof UserValueRow) {
+            return el.getValue();
+          }
+          return null;
+        });
+        if (!allValue.includes(null)) {
+          console.log(...allValue);
+        }
+      },
+    });
   }
 
   protected render() {
-    return (`
+    return `
       {{#> ProfileLayout }}
         {{{ Title tag="h1" className="visually-hidden" text="Сменить пароль" }}}
         <div class="profile-password">
@@ -28,6 +48,8 @@ export class ProfileChangePassword extends Block<IProps> {
                 type=this.type 
                 name=this.name
                 label=this.label
+                ref=this.ref
+                validate=this.validate
               }}}
             </li>
             {{/each}}
@@ -36,10 +58,11 @@ export class ProfileChangePassword extends Block<IProps> {
             size="full" 
             colorTheme="blue" 
             className="profile-edit-page__save" 
-            text="Сохранить" 
+            text="Сохранить"
+            onClick=onSubmit 
           }}}
         </div>
       {{/ProfileLayout }}
-    `)
+    `;
   }
 }

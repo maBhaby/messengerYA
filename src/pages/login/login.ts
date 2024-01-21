@@ -1,51 +1,50 @@
-import Block, { RefType } from "@/services/Block";
-import { BaseInput } from "@/components/input/base/base";
-import { navigate } from "@/services/navigate";
-import { validateLogin } from "@/utils/validations/login";
+import Block, { RefType } from '@/services/Block';
+import { BaseInput } from '@/components/input/base/base';
+import { navigate } from '@/services/navigate';
+import { validateLogin } from '@/utils/validations/login';
 
 interface IProps {
   validate: {
-    login: (val: string) => void
-  },
-  onLogin: (e: Event) => void
-  handleOpenRegPage: () => void
+    login: (val: string) => void;
+  };
+  onLogin: (e: Event) => void;
+  handleOpenRegPage: () => void;
 }
 
 interface IRefs extends RefType {
-  login: BaseInput
-  password: BaseInput
+  login: BaseInput;
+  password: BaseInput;
 }
 
 export class LoginPage extends Block<IProps, IRefs> {
-  constructor () {
+  constructor() {
     super({
       validate: {
-          login: validateLogin
+        login: validateLogin,
       },
       onLogin: (event) => {
-          event.preventDefault();
-          const login = this.refs.login.getValue();
-          const password = this.refs.password.getValue();
+        event.preventDefault();
+        const login = this.refs.login.getValue();
+        const password = this.refs.password.getValue();
 
-          if(!login) {
-              return;
-          }
+        if (!login) {
+          return;
+        }
 
-          console.log({
-              login,
-              password
-          })
-          // navigate('list')
+        console.log({
+          login,
+          password,
+        });
+        navigate('chat');
       },
       handleOpenRegPage: () => {
-        navigate('registration')
-      }
-  })
+        navigate('registration');
+      },
+    });
   }
 
-    render() {
-    return (
-      `
+  render() {
+    return `
       <main>
         <section class="center-layout">
           <div class="auth-page__wrapper">
@@ -76,8 +75,6 @@ export class LoginPage extends Block<IProps, IRefs> {
           </div>
         </section class="center-layout">
       <main>
-      `
-    )
+      `;
   }
-  
 }
