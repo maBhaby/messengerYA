@@ -1,6 +1,6 @@
 .current_chat {
   display: grid;
-  grid-template-rows: var(--chat-panel-height) 1fr var(--chat-panel-height);
+  grid-template-rows: var(--chat-panel-height) 1fr minmax(var(--chat-panel-height), auto);
 
   padding: 0 30px;
 }

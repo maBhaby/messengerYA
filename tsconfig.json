@@ -19,8 +19,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "strictNullChecks": true ,
     "paths": {
-      "@static/*": ["src/static/*"]
+      "@static/*": ["src/static/*"],
+      "@/*": ["src/*"]
     }
   },
   "include": ["src", "typings"]
