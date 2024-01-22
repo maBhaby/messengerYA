@@ -1,9 +1,12 @@
 import Block from '@/services/Block';
 import { arrowIcon } from '@static/images';
 
+import { handleRedirectToChat } from '@/utils/redirects';
+
 interface IProps {
   userName: string;
   arrow: string;
+  handleRedirectToChat: typeof handleRedirectToChat;
 }
 
 export class ProfilePage extends Block<IProps> {
@@ -11,6 +14,7 @@ export class ProfilePage extends Block<IProps> {
     super({
       userName: 'asd',
       arrow: arrowIcon,
+      handleRedirectToChat,
     });
   }
 
@@ -22,6 +26,7 @@ export class ProfilePage extends Block<IProps> {
           {{{ Link 
             page="chat" 
             color="gray" 
+            onClick=handleRedirectToChat
             className="layout-profile__back_link"
             text='
               <img src="${arrow}" alt="arrow" width="30" height="20" />

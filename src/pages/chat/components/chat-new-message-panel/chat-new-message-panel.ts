@@ -45,8 +45,8 @@ export class ChatNewMessagePanel extends Block<IProps, IRefs> {
             <img 
               src="${imgPin}" 
               alt="pin" 
-              height="34" 
-              width="32" 
+              height="34"
+              width="32"
             />
           ' }}}
           <div>

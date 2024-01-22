@@ -42,10 +42,10 @@ class Block<Props extends object = {}, Refs extends RefType = RefType> {
 
   private _element: HTMLElement | null = null;
 
-  constructor(props: {} = {}) {
+  constructor(props: Props = {} as Props) {
     const eventBus = new EventBus();
 
-    this.props = this._makePropsProxy(props) as Props;
+    this.props = this._makePropsProxy(props as unknown as {}) as Props;
 
     this.eventBus = () => eventBus;
 

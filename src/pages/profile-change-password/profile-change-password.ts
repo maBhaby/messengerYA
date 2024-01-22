@@ -1,9 +1,13 @@
 import { UserValueRow } from '@/components';
 import Block, { RefType } from '@/services/Block';
+import { handleRedirectToChat } from '@/utils/redirects';
+import { arrowIcon } from '@static/images';
 
 interface IProps {
   text: string;
+  arrow: string;
   onSubmit: (e: Event) => void;
+  handleRedirectToChat: typeof handleRedirectToChat;
 }
 
 interface IRefs extends RefType {
@@ -16,6 +20,7 @@ export class ProfileChangePassword extends Block<IProps, IRefs> {
   constructor() {
     super({
       text: 'test',
+      arrow: arrowIcon,
       onSubmit: (e: Event) => {
         e.preventDefault();
         const allValue = Object.values(this.refs).map((el) => {
@@ -28,12 +33,27 @@ export class ProfileChangePassword extends Block<IProps, IRefs> {
           console.log(...allValue);
         }
       },
+      handleRedirectToChat,
     });
   }
 
   protected render() {
+    const { arrow } = this.props;
+
     return `
-      {{#> ProfileLayout }}
+      <main class="layout-profile">
+      <aside class="layout-profile__back">
+        {{{ Link 
+          page="chat" 
+          color="gray" 
+          className="layout-profile__back_link"
+          onClick=handleRedirectToChat
+          text='
+            <img src="${arrow}" alt="arrow" width="30" height="20" />
+          '
+        }}}
+      </aside>
+      <section class="layout-profile__content">
         {{{ Title tag="h1" className="visually-hidden" text="Сменить пароль" }}}
         <div class="profile-password">
           <div class="profile-password__header">
@@ -62,7 +82,8 @@ export class ProfileChangePassword extends Block<IProps, IRefs> {
             onClick=onSubmit 
           }}}
         </div>
-      {{/ProfileLayout }}
+      </section>
+    </main>
     `;
   }
 }
