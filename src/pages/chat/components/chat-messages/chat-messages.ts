@@ -1,6 +1,6 @@
 import Block from '@/services/Block';
 
-export class ChatMessages extends Block {
+export class ChatMessages extends Block<any> {
   protected render() {
     return `
     <div class="chat-messages">

@@ -20,5 +20,5 @@ Object.entries({ ...MainComp, ...ChatComp }).forEach(([name, comp]) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  navigate('change-password');
+  navigate('profile');
 });

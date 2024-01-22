@@ -9,11 +9,18 @@ interface IProps {
   size?: 'default';
   text: string;
   page?: PageTypes;
+  onClick: (e: Event) => void;
 }
 
 export class Link extends Block<IProps> {
   constructor(props: IProps) {
     super(props);
+  }
+
+  protected init(): void {
+    this.props.events = {
+      click: this.props.onClick,
+    };
   }
 
   protected render() {

@@ -1,14 +1,20 @@
 import Block from '@/services/Block';
+import { navigate } from '@/services/navigate';
 import { arrowWithoutLineIcon } from '@static/images';
 
 interface IProps {
   imageLink: string;
+  handleOpenProfile: (e: Event) => void;
 }
 
 export class SearchPanel extends Block<IProps> {
   constructor() {
     super({
       imageLink: arrowWithoutLineIcon,
+      handleOpenProfile: (e) => {
+        e.preventDefault();
+        navigate('profile');
+      },
     });
   }
 
@@ -21,6 +27,7 @@ export class SearchPanel extends Block<IProps> {
             page="profile" 
             color="gray" 
             className="search-panel__link" 
+            onClick=handleOpenProfile
             text="
             Профиль
             <img 

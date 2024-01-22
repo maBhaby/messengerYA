@@ -1,5 +1,5 @@
 import Block, { RefType } from '@/services/Block';
-import { MessageClass } from '@/components';
+import { Message } from '@/components';
 import { arrowIcon, pinIcon } from '@static/images';
 import { validateMessage } from '@/utils/validations/login';
 
@@ -13,7 +13,7 @@ interface IProps {
 }
 
 interface IRefs extends RefType {
-  messageInput: MessageClass;
+  messageInput: Message;
 }
 
 export class ChatNewMessagePanel extends Block<IProps, IRefs> {

@@ -1,6 +1,6 @@
 import Block from '@/services/Block';
 
-export class ChatList extends Block {
+export class ChatList extends Block<any> {
   protected render() {
     return `
       <nav class="chat-list">
