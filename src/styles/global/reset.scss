@@ -1,8 +1,9 @@
 // reset everything
-*, *::before,*::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
-
 
 * {
   margin: 0;
@@ -40,10 +41,7 @@ object {
 
 // reset textarea style
 textarea {
-  // move the label to the top
   vertical-align: top;
-
-  // turn off scroll bars in IE unless needed
   overflow: auto;
 }
 
@@ -83,24 +81,25 @@ h6 {
 }
 
 // reset list style
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
 // reset text input style
-[type="date"],
-[type="datetime"],
-[type="datetime-local"],
-[type="email"],
-[type="month"],
-[type="number"],
-[type="password"],
-[type="search"],
-[type="tel"],
-[type="text"],
-[type="time"],
-[type="url"],
-[type="week"],
+[type='date'],
+[type='datetime'],
+[type='datetime-local'],
+[type='email'],
+[type='month'],
+[type='number'],
+[type='password'],
+[type='search'],
+[type='tel'],
+[type='text'],
+[type='time'],
+[type='url'],
+[type='week'],
 textarea,
 select {
   appearance: none;
@@ -116,15 +115,13 @@ select {
   opacity: 1;
 }
 
-
-
 // reset checkbox and radio style
 [type='checkbox'],
 [type='radio'] {
   appearance: none;
 
   &:focus {
-    outline: 0
+    outline: 0;
   }
 }
 

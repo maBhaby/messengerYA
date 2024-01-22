@@ -2,7 +2,6 @@
   position: relative;
   width: 100%;
   --input-border-color: var(--color-blue);
-  
 
   &__label {
     color: var(--color-gray);
@@ -17,7 +16,7 @@
     border-bottom: 1px solid var(--input-border-color);
 
     &--error {
-      border-color: var(--color-red);
+      border-color: var(--color-red) !important;
     }
   }
 

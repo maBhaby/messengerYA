@@ -1,20 +1,20 @@
-<div class="input {{className}}">
-  <label for="{{name}}" class="input__wrap">
-    <span class="input__label">{{label}}</span>
-    <input 
-      id="{{name}}" 
-      value="{{value}}" 
+<div class="input {{ className }}">
+  <label for="{{ name }}" class="input__wrap">
+    <span class="input__label">{{ label }}</span>
+    <input
+      id="{{ name }}"
+      value="{{ value }}"
       class="
         input__field
         {{#if errorText}}
           input__field--error
         {{/if}}
-      " 
-      name="{{name}}" 
-      type="{{type}}" 
+      "
+      name="{{ name }}"
+      type="{{ type }}"
     />
   </label>
   {{#if errorText}}
-    <span class="input__error-text">{{errorText}}</span>
+  <span class="input__error-text">{{ errorText }}</span>
   {{/if}}
 </div>

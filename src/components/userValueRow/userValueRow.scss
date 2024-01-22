@@ -1,4 +1,4 @@
-@use "src/styles/global/mixins";
+@use 'src/styles/global/mixins';
 
 .user-value-row {
   @include mixins.flex('sc');
@@ -22,5 +22,10 @@
       background-color: transparent;
       color: var(--color-gray);
     }
+  }
+
+  &__err-line {
+    display: flex;
+    justify-content: flex-end;
   }
 }

@@ -2,20 +2,49 @@
   "name": "messengerya",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "start": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "build:preview": "tsc && vite build && vite preview"
+    "build:preview": "tsc && vite build && vite preview",
+    "prepare": "husky install",
+    "pretty": "prettier --write src/**/*",
+    "lint:fix": "eslint --fix . --quiet --ext .js,.ts",
+    "csslint:fix": "stylelint --fix \"src/**/*.{css,less,sass,scss,sss}\"",
+    "lint:staged": "lint-staged",
+    "start:tsc": "tsc -b -w --preserveWatchOutput"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts}": [
+      "npm run lint:fix",
+      "npm run pretty"
+    ],
+    "*.{scss,css}": [
+      "npm run csslint:fix"
+    ]
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^20.10.6",
+    "@typescript-eslint/eslint-plugin": "^6.18.0",
+    "@typescript-eslint/parser": "^6.18.0",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-alias": "^1.1.2",
     "express": "^4.18.2",
     "handlebars": "^4.7.8",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1",
     "sass": "^1.69.5",
+    "stylelint": "^16.1.0",
+    "stylelint-scss": "^6.0.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
+  },
+  "dependencies": {
+    "nanoid": "^5.0.4"
   }
 }
