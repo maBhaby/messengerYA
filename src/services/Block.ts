@@ -9,7 +9,7 @@ import EventBus from './EventBus';
 export type RefType = Record<string, HTMLElement | Block<object>>;
 
 type BlockClassProps = {
-  [key: string]: any;
+  [key: string]: unknown;
 };
 
 export interface BlockClass<P extends object = BlockClassProps, R extends RefType = RefType>
@@ -21,7 +21,7 @@ export interface BlockClass<P extends object = BlockClassProps, R extends RefTyp
 // eslint-disable-next-line no-undef
 type EventsProps = { events?: Record<string, EventListenerOrEventListenerObject> };
 
-class Block<Props extends object, Refs extends RefType = RefType> {
+class Block<Props extends object = {}, Refs extends RefType = RefType> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -42,10 +42,10 @@ class Block<Props extends object, Refs extends RefType = RefType> {
 
   private _element: HTMLElement | null = null;
 
-  constructor(props: Props = {} as Props) {
+  constructor(props: {} = {}) {
     const eventBus = new EventBus();
 
-    this.props = this._makePropsProxy(props);
+    this.props = this._makePropsProxy(props) as Props;
 
     this.eventBus = () => eventBus;
 
@@ -90,7 +90,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     Object.values(this.children).forEach((child) => child.dispatchComponentDidMount());
   }
 
-  private _componentDidUpdate(oldProps: any, newProps: any) {
+  private _componentDidUpdate(oldProps: Props, newProps: Props) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
@@ -122,7 +122,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     return true;
   }
 
-  setProps = (nextProps: any) => {
+  setProps = (nextProps: object) => {
     if (!nextProps) {
       return;
     }
@@ -148,9 +148,9 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     this._addEvents();
   }
 
-  private compile(template: string, context: any) {
-    const contextAndStubs = { ...context, __refs: this.refs };
-
+  private compile(template: string, context: object) {
+    const contextAndStubs = { ...context, __children: [] as Array<{ component: unknown, embed(node: DocumentFragment): void }>, __refs: this.refs };
+    debugger
     Object.entries(this.children).forEach(([key, child]) => {
       contextAndStubs[key] = `<div data-id="${child.id}"></div>`;
     });
@@ -160,7 +160,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     const temp = document.createElement('template');
 
     temp.innerHTML = html;
-    contextAndStubs.__children?.forEach(({ embed }: any) => {
+    contextAndStubs.__children?.forEach(({ embed }) => {
       embed(temp.content);
     });
 
@@ -189,18 +189,17 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     return this._element;
   }
 
-  _makePropsProxy(props: any) {
+  _makePropsProxy(props:{ [index: string]: unknown }) {
     const self = this;
     return new Proxy(props, {
       get(target, prop) {
-        const value = target[prop];
+        const value = target[(prop as string)];
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target, prop, value) {
         const oldTarget = { ...target };
 
-        // eslint-disable-next-line no-param-reassign
-        target[prop] = value;
+        target[(prop as string)] = value;
 
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;

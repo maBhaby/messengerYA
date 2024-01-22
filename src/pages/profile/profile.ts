@@ -1,6 +1,10 @@
 import Block from '@/services/Block';
 
-export class ProfilePage extends Block<any> {
+interface IProps {
+  userName: string
+}
+
+export class ProfilePage extends Block<IProps> {
   constructor() {
     super({
       userName: 'asd',

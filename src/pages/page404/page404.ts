@@ -2,9 +2,9 @@ import Block from '@/services/Block';
 
 export class Page404 extends Block<object> {
   constructor() {
-    super({});
+    super({})
   }
-
+  
   protected render() {
     return `
       {{{ ErrorPageContent 

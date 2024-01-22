@@ -12,7 +12,8 @@
     "pretty": "prettier --write src/**/*",
     "lint:fix": "eslint --fix . --quiet --ext .js,.ts",
     "csslint:fix": "stylelint --fix \"src/**/*.{css,less,sass,scss,sss}\"",
-    "lint:staged": "lint-staged"
+    "lint:staged": "lint-staged",
+    "tsc:w": "tsc -b -w --preserveWatchOutput"
   },
   "lint-staged": {
     "src/**/*.{js,ts}": [

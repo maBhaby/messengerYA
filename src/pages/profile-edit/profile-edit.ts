@@ -16,7 +16,7 @@ interface IRef extends RefType {
 export class ProfileEditPage extends Block<IProps, IRef> {
   constructor() {
     super({
-      onSubmit: (e) => {
+      onSubmit: (e: Event) => {
         e.preventDefault();
         const allValue = Object.values(this.refs).map((el) => {
           if (el instanceof UserValueRow) {

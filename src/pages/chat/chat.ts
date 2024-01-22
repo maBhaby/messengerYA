@@ -1,6 +1,10 @@
 import Block from '@/services/Block';
 
-export class ChatPage extends Block<any> {
+export class ChatPage extends Block<object> {
+  constructor() {
+    super({})
+  }
+
   protected render() {
     return `
       {{#> ChatLayout}}

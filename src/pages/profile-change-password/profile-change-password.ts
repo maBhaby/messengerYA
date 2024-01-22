@@ -16,7 +16,7 @@ export class ProfileChangePassword extends Block<IProps, IRefs> {
   constructor() {
     super({
       text: 'test',
-      onSubmit: (e) => {
+      onSubmit: (e: Event) => {
         e.preventDefault();
         const allValue = Object.values(this.refs).map((el) => {
           if (el instanceof UserValueRow) {
