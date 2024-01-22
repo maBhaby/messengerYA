@@ -1,10 +1,10 @@
 import Block from '@/services/Block';
 
 export class ChatList extends Block<object> {
-  constructor () {
-    super({})
+  constructor() {
+    super({});
   }
-  
+
   protected render() {
     return `
       <nav class="chat-list">

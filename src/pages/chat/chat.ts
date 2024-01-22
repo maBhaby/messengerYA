@@ -2,12 +2,12 @@ import Block from '@/services/Block';
 
 export class ChatPage extends Block<object> {
   constructor() {
-    super({})
+    super({});
   }
 
   protected render() {
     return `
-      {{#> ChatLayout}}
+      <main class="chat-layout">
         <div class="chat-page">
           <aside class="chat-page__chat_list">
             {{{ SearchPanel }}}
@@ -15,7 +15,7 @@ export class ChatPage extends Block<object> {
           </aside>
           {{{ CurrentChat}}}
         </div>
-      {{/ChatLayout}}
+      </main>
     `;
   }
 }

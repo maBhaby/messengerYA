@@ -2,7 +2,7 @@ import Block from '@/services/Block';
 
 export class CurrentChat extends Block<object> {
   constructor() {
-    super({})
+    super({});
   }
 
   protected render() {

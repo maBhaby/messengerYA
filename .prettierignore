@@ -1,2 +1,4 @@
-# Ignore all HTML files:
 **/*.hbs
+**/*.svg
+**/*.png
+fonts

@@ -149,11 +149,15 @@ class Block<Props extends object = {}, Refs extends RefType = RefType> {
   }
 
   private compile(template: string, context: object) {
-    const contextAndStubs = { ...context, __children: [] as Array<{ component: unknown, embed(node: DocumentFragment): void }>, __refs: this.refs };
-    debugger
-    Object.entries(this.children).forEach(([key, child]) => {
-      contextAndStubs[key] = `<div data-id="${child.id}"></div>`;
-    });
+    const contextAndStubs = {
+      ...context,
+      __children: [] as Array<{ component: unknown; embed(node: DocumentFragment): void }>,
+      __refs: this.refs,
+    };
+
+    // Object.entries(this.children).forEach(([key, child]) => {
+    //   contextAndStubs[key] = `<div data-id="${child.id}"></div>`;
+    // });
 
     const html = Handlebars.compile(template)(contextAndStubs);
 
@@ -189,17 +193,17 @@ class Block<Props extends object = {}, Refs extends RefType = RefType> {
     return this._element;
   }
 
-  _makePropsProxy(props:{ [index: string]: unknown }) {
+  _makePropsProxy(props: { [index: string]: unknown }) {
     const self = this;
     return new Proxy(props, {
       get(target, prop) {
-        const value = target[(prop as string)];
+        const value = target[prop as string];
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target, prop, value) {
         const oldTarget = { ...target };
 
-        target[(prop as string)] = value;
+        target[prop as string] = value;
 
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
