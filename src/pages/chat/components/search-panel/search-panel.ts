@@ -11,7 +11,7 @@ export class SearchPanel extends Block<IProps> {
   constructor() {
     super({
       imageLink: arrowWithoutLineIcon,
-      handleOpenProfile: (e) => {
+      handleOpenProfile: (e: Event) => {
         e.preventDefault();
         navigate('profile');
       },
@@ -19,7 +19,6 @@ export class SearchPanel extends Block<IProps> {
   }
 
   protected render() {
-    const { imageLink } = this.props;
     return `
       <div class="search-panel">
         <div class="search-panel__top">
@@ -28,15 +27,12 @@ export class SearchPanel extends Block<IProps> {
             color="gray" 
             className="search-panel__link" 
             onClick=handleOpenProfile
-            text="
+            text='
             Профиль
-            <img 
-              src='${imageLink}' 
-              alt='arrow' 
-              height='10' 
-              width='10' 
-            />
-            "
+            <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              path id="Polygon 1" d="M1 9L5 5L1 1" stroke="#999999"/>
+            </svg>
+            '
           }}}
         </div>
         <search>

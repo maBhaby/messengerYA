@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 export type Listener<T extends unknown[] = any[]> = (...args: T) => void;
 
 export default class EventBus<

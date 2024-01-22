@@ -28,8 +28,7 @@ export class Message extends Block<IProps> {
           <img 
             src='${image}' 
             alt='фото сообщения'
-            width='300' 
-            height='' 
+            width="300"
           />
           <div class='message__bottom message__bottom--image'>
             <div class='message__time'>

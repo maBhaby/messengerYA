@@ -45,7 +45,7 @@ export class RegistrationPage extends Block<IProps, IRefs> {
         repeat_password: validatePassword,
         name: validateName,
       },
-      onSubmit: (event) => {
+      onSubmit: (event: Event) => {
         event.preventDefault();
         const allValue = Object.values(this.refs).map((el) => {
           if (el instanceof BaseInput) {

@@ -1,6 +1,10 @@
 import Block from '@/services/Block';
 
-export class CurrentChat extends Block<any> {
+export class CurrentChat extends Block<object> {
+  constructor() {
+    super({});
+  }
+
   protected render() {
     return `
       <section class="current_chat">

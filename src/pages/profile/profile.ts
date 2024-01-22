@@ -1,9 +1,20 @@
 import Block from '@/services/Block';
 import { arrowIcon } from '@static/images';
 
+import { 
+  handleRedirectToChat, 
+  handleLogout, 
+  handleRedirectToChangePassword, 
+  handleRedirectToProfileEdit 
+} from '@/utils/redirects';
+
 interface IProps {
   userName: string;
   arrow: string;
+  handleRedirectToChat: typeof handleRedirectToChat;
+  handleLogout: typeof handleLogout;
+  handleRedirectToChangePassword: typeof handleRedirectToChangePassword
+  handleRedirectToProfileEdit: typeof handleRedirectToProfileEdit
 }
 
 export class ProfilePage extends Block<IProps> {
@@ -11,20 +22,25 @@ export class ProfilePage extends Block<IProps> {
     super({
       userName: 'asd',
       arrow: arrowIcon,
+      handleRedirectToChat,
+      handleRedirectToProfileEdit,
+      handleLogout,
+      handleRedirectToChangePassword
     });
   }
 
   protected render() {
-    const { userName, arrow } = this.props;
+    const { userName } = this.props;
     return `
       <main class="layout-profile">
         <aside class="layout-profile__back">
           {{{ Link 
             page="chat" 
             color="gray" 
+            onClick=handleRedirectToChat
             className="layout-profile__back_link"
             text='
-              <img src="${arrow}" alt="arrow" width="30" height="20" />
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><title>Artboard-35</title><g id="Left-2" data-name="Left"><polygon points="24 12.001 2.914 12.001 8.208 6.706 7.501 5.999 1 12.501 7.5 19.001 8.207 18.294 2.914 13.001 24 13.001 24 12.001" style="fill:#fff"/></g></svg>
             '
           }}}
         </aside>
@@ -52,13 +68,13 @@ export class ProfilePage extends Block<IProps> {
             </ul>
             <ul class="profile-page__list">
               <li class="profile-page__list_item profile-page__list_item--links">
-                {{{ Link page="profile-edit" color="blue" text="Изменить данные" }}}
+                {{{ Link onClick=handleRedirectToProfileEdit page="profile-edit" color="blue" text="Изменить данные" }}}
               </li>
               <li class="profile-page__list_item profile-page__list_item--links">
-                {{{ Link page="change-password" color="blue" text="Изменить пароль" }}}
+                {{{ Link onClick=handleRedirectToChangePassword page="change-password" color="blue" text="Изменить пароль" }}}
               </li>
               <li class="profile-page__list_item profile-page__list_item--links">
-                {{{ Link page="login" color="red" text="Выйти" }}}
+                {{{ Link onClick=handleLogout page="login" color="red" text="Выйти" }}}
               </li>
             </ul>
           </div>

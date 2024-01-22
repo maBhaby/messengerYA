@@ -18,8 +18,8 @@ export class ChangeAvatar extends Block<IProps> {
       <img 
         src="${image}"
         alt='change avatar' 
-        height='40' 
-        width='40' 
+        height="40"
+        width="40" 
       />
         <div class='change-avatar__wrap'>
           <p>
