@@ -28,15 +28,15 @@ export class SearchPanel extends Block<IProps> {
             color="gray" 
             className="search-panel__link" 
             onClick=handleOpenProfile
-            text="
+            text='
             Профиль
             <img 
-              src='${imageLink}' 
-              alt='arrow' 
-              height='10' 
-              width='10' 
+              alt="arrow" 
+              height="10"
+              width="10" 
+              src=${imageLink}
             />
-            "
+            '
           }}}
         </div>
         <search>
