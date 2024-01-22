@@ -21,7 +21,8 @@
 
     @include mixins.flex('cc');
 
-    img {
+    svg {
+      height: 15px;
       transform: rotate(180deg);
     }
   }
