@@ -56,6 +56,8 @@ export class RegistrationPage extends Block<IProps, IRefs> {
         if (!allValue.includes(null)) {
           console.log(...allValue);
         }
+        navigate('chat');
+        this.hide();
       },
       handleRedirectToLogin: () => {
         navigate('login');

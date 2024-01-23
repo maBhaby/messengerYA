@@ -22,11 +22,16 @@ export class ProfilePage extends Block<IProps> {
     super({
       userName: 'asd',
       arrow: arrowIcon,
-      handleRedirectToChat,
-      handleRedirectToProfileEdit,
-      handleLogout,
-      handleRedirectToChangePassword
+      handleRedirectToChat: (e) => { this._hideAfterRedirect(e ,handleRedirectToChat)},
+      handleRedirectToProfileEdit: (e) => this._hideAfterRedirect(e ,handleRedirectToProfileEdit),
+      handleLogout: (e) => this._hideAfterRedirect(e ,handleLogout),
+      handleRedirectToChangePassword: (e) => this._hideAfterRedirect(e ,handleRedirectToChangePassword)
     });
+  }
+
+  private _hideAfterRedirect = (event: Event, fn: (e:Event) => void) => {
+    fn(event)
+    this.hide()
   }
 
   protected render() {

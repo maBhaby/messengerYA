@@ -36,9 +36,11 @@ export class LoginPage extends Block<IProps, IRefs> {
           password,
         });
         navigate('chat');
+        this.hide()
       },
       handleOpenRegPage: () => {
         navigate('registration');
+        this.hide()
       },
     });
   }

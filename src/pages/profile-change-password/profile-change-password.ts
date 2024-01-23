@@ -33,8 +33,13 @@ export class ProfileChangePassword extends Block<IProps, IRefs> {
           console.log(...allValue);
         }
       },
-      handleRedirectToChat,
+      handleRedirectToChat: (e) => { this._hideAfterRedirect(e ,handleRedirectToChat)},
     });
+  }
+
+  private _hideAfterRedirect = (event: Event, fn: (e:Event) => void) => {
+    fn(event)
+    this.hide()
   }
 
   protected render() {

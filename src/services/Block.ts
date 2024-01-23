@@ -61,6 +61,13 @@ class Block<Props extends object = {}, Refs extends RefType = RefType> {
     });
   }
 
+  private _removeEvents() {
+    const events = this.props?.events || {};
+    Object.keys(events).forEach((eventName) => {
+      this._element!.removeEventListener(eventName, events[eventName]);
+    });
+  }
+
   _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
@@ -115,6 +122,7 @@ class Block<Props extends object = {}, Refs extends RefType = RefType> {
   }
 
   _componentWillUnmount() {
+    this._removeEvents()
     this.componentWillUnmount();
   }
 
