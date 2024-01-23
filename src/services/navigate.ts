@@ -11,7 +11,7 @@ import {
 import { PageTypes } from '@/interfaces/common';
 import { BlockClass } from './Block';
 
-const pages: Record<PageTypes, BlockClass> = {
+const pages: Record<PageTypes, BlockClass<object>> = {
   login: LoginPageClass,
   registration: RegistrationPageClass,
   page404: Page404,
@@ -37,49 +37,3 @@ export const navigate = (page: PageTypes) => {
 
   initContent(app, page);
 };
-
-// const pages = {
-//   // login: [Pages.LoginPage, { test: '123' }],
-//   registration: [Pages.RegistrationPage],
-//   page404: [Pages.ErrorPage, { errorCode: 404, errorMessage: 'Не туда попали' }],
-//   page500: [Pages.ErrorPage, { errorCode: 500, errorMessage: 'Мы уже фиксим' }],
-//   profile: [
-//     Pages.ProfilePage,
-//     {
-//       userName: 'Иван',
-//       images: {
-//         userChangeImage,
-//         arrowIcon,
-//       },
-//     },
-//   ],
-//   chat: [
-//     Pages.ChatPage,
-//     {
-//       images: {
-//         arrowIcon,
-//         arrowWithoutLineIcon,
-//         canonImage,
-//         pinIcon,
-//       },
-//     },
-//   ],
-//   'profile-edit': [
-//     Pages.ProfileEditPage,
-//     {
-//       images: {
-//         userChangeImage,
-//         arrowIcon,
-//       },
-//     },
-//   ],
-//   'change-password': [
-//     Pages.ProfileChangePassword,
-//     {
-//       images: {
-//         userChangeImage,
-//         arrowIcon,
-//       },
-//     },
-//   ],
-// };

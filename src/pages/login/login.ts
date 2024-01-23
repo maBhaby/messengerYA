@@ -22,7 +22,7 @@ export class LoginPage extends Block<IProps, IRefs> {
       validate: {
         login: validateLogin,
       },
-      onLogin: (event) => {
+      onLogin: (event: Event) => {
         event.preventDefault();
         const login = this.refs.login.getValue();
         const password = this.refs.password.getValue();
@@ -36,9 +36,11 @@ export class LoginPage extends Block<IProps, IRefs> {
           password,
         });
         navigate('chat');
+        this.hide()
       },
       handleOpenRegPage: () => {
         navigate('registration');
+        this.hide()
       },
     });
   }

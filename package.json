@@ -2,7 +2,7 @@
   "name": "messengerya",
   "private": true,
   "version": "0.0.0",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "start": "vite",
     "build": "tsc --noEmit && vite build",
@@ -13,7 +13,7 @@
     "lint:fix": "eslint --fix . --quiet --ext .js,.ts",
     "csslint:fix": "stylelint --fix \"src/**/*.{css,less,sass,scss,sss}\"",
     "lint:staged": "lint-staged",
-    "start:tsc": "tsc -b -w --preserveWatchOutput"
+    "tsc:w": "tsc -b -w --preserveWatchOutput"
   },
   "lint-staged": {
     "src/**/*.{js,ts}": [
