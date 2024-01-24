@@ -41,10 +41,7 @@ object {
 
 // reset textarea style
 textarea {
-  // move the label to the top
   vertical-align: top;
-
-  // turn off scroll bars in IE unless needed
   overflow: auto;
 }
 

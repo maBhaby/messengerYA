@@ -8,7 +8,19 @@
   font-size: 12px;
   font-weight: 500;
 
+  border: 1px solid transparent;
+
   &::placeholder {
     color: var(--color-gray);
+  }
+
+  &__wrap {
+    position: relative;
+
+    & > span {
+      position: absolute;
+      left: 0;
+      top: -10px;
+    }
   }
 }

@@ -1,106 +1,24 @@
-import Handlebars from 'handlebars'
+import Handlebars from 'handlebars';
 
-import * as Pages from './pages'
-import * as Components from './components'
-import * as Layouts from './layouts'
+import * as Layouts from './layouts';
+import * as MainComp from './components';
+import * as ChatComp from './pages/chat/components';
 
-import * as ChatComponents from './pages/chat/components'
-import {
-  arrowIcon,
-  arrowWithoutLineIcon,
-  canonImage,
-  pinIcon,
-  userChangeImage,
-} from './static/images'
+import { registerComponent } from './services/registerComponent';
+import { navigate } from './services/navigate';
 
-import './styles/index.scss'
+import Block from './services/Block';
 
-const AllAppElements = {
-  ...Pages,
-  ...Components,
-  ...Layouts,
-  ...ChatComponents,
-}
+import './styles/index.scss';
 
-const pages = {
-  login: [Pages.LoginPage, { test: '123' }],
-  registration: [Pages.RegistrationPage],
-  page404: [
-    Pages.ErrorPage,
-    { errorCode: 404, errorMessage: 'Не туда попали' },
-  ],
-  page500: [
-    Pages.ErrorPage,
-    { errorCode: 500, errorMessage: 'Мы уже фиксим' },
-  ],
-  profile: [
-    Pages.ProfilePage,
-    {
-      userName: 'Иван',
-      images: {
-        userChangeImage,
-        arrowIcon,
-      },
-    },
-  ],
-  chat: [
-    Pages.ChatPage,
-    {
-      images: {
-        arrowIcon,
-        arrowWithoutLineIcon,
-        canonImage,
-        pinIcon,
-      },
-    },
-  ],
-  'profile-edit': [
-    Pages.ProfileEditPage,
-    {
-      images: {
-        userChangeImage,
-        arrowIcon,
-      },
-    },
-  ],
-  'change-password': [
-    Pages.ProfileChangePassword,
-    {
-      images: {
-        userChangeImage,
-        arrowIcon,
-      },
-    },
-  ],
-}
+Object.entries(Layouts).forEach(([keys, comp]) => {
+  Handlebars.registerPartial(keys, comp);
+});
 
-Object.entries(AllAppElements).forEach(
-  ([name, components]) => {
-    Handlebars.registerPartial(name, components)
-  }
-)
-
-function initContent(source: any, context: any) {
-  const container = document.getElementById('app')!
-  container.innerHTML = Handlebars.compile(source)(context)
-}
-
-function navigate(page: string) {
-  //@ts-ignore
-  const [source, context] = pages[page]
-  initContent(source, context)
-}
+Object.entries({ ...MainComp, ...ChatComp }).forEach(([name, comp]) => {
+  registerComponent(name, comp as typeof Block);
+});
 
 document.addEventListener('DOMContentLoaded', () => {
-  navigate('login')
-})
-
-document.addEventListener('click', (e) => {
-  //@ts-ignore
-  const page = e.target.getAttribute('page')
-  if (page) {
-    navigate(page)
-
-    e.preventDefault()
-  }
-})
+  navigate("login");
+});
