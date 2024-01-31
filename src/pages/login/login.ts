@@ -2,6 +2,7 @@ import Block, { RefType } from '@/services/Block';
 import { BaseInput } from '@/components/input/base/base';
 import { navigate } from '@/services/navigate';
 import { validateLogin } from '@/utils/validations/login';
+import { router } from '@/lib/router';
 
 interface IProps {
   validate: {
@@ -39,8 +40,7 @@ export class LoginPage extends Block<IProps, IRefs> {
         this.hide()
       },
       handleOpenRegPage: () => {
-        navigate('registration');
-        this.hide()
+        router.go('/registration')
       },
     });
   }

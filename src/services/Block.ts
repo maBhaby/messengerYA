@@ -10,7 +10,7 @@ export type RefType = Record<string, HTMLElement | Block<object>>;
 
 type BlockClassProps = {
   [key: string]: unknown;
-};
+} & EventsProps
 
 export interface BlockClass<P extends object = BlockClassProps, R extends RefType = RefType>
   extends Function {

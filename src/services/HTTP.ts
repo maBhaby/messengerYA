@@ -24,7 +24,7 @@ const queryStringify = (data: object) => {
   return result;
 };
 
-class FetchApi {
+class HTTP {
   get: HTTPMethod = (url, options = {}) =>
     this.request(
       url,
@@ -75,4 +75,4 @@ class FetchApi {
   };
 }
 
-export default FetchApi;
+export default HTTP;

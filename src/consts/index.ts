@@ -8,3 +8,5 @@ export const METHODS = {
   PUT: 'PUT',
   DELETE: 'DELETE',
 } as const;
+
+export const API_PATH = 'https://ya-praktikum.tech/api/v2'

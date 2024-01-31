@@ -1,6 +1,6 @@
 import { BaseInput } from '@/components/input/base/base';
+import { router } from '@/lib/router';
 import Block, { RefType } from '@/services/Block';
-import { navigate } from '@/services/navigate';
 import {
   validateEmail,
   validateLogin,
@@ -56,12 +56,11 @@ export class RegistrationPage extends Block<IProps, IRefs> {
         if (!allValue.includes(null)) {
           console.log(...allValue);
         }
-        navigate('chat');
-        this.hide();
+        
+        router.go('/chat')
       },
       handleRedirectToLogin: () => {
-        navigate('login');
-        this.hide();
+        router.go('/login');
       },
     });
   }

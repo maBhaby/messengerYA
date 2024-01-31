@@ -7,3 +7,7 @@ export type PageTypes =
   | 'page500'
   | 'profile-edit'
   | 'change-password';
+
+type ToPath<T extends string = string> = `/${T}`
+
+export type PagePathsType = ToPath<PageTypes>

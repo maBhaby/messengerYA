@@ -2,7 +2,7 @@ import Handlebars from 'handlebars';
 import { canonImage } from '@static/images';
 
 export { default as ChatPage } from './chat.hbs?raw';
-export { ChatPage as ChatPageClass } from './chat';
+export { default as ChatPageClass} from './chat';
 
 Handlebars.registerHelper('chatList', () => [
   {
