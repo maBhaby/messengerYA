@@ -25,6 +25,13 @@ const queryStringify = (data: object) => {
 };
 
 class HTTP {
+
+  private baseUrl: string
+
+  constructor(url: string) {
+    this.baseUrl = url
+  }
+
   get: HTTPMethod = (url, options = {}) =>
     this.request(
       url,
@@ -52,7 +59,7 @@ class HTTP {
       const xhr = new XMLHttpRequest();
       xhr.timeout = timeout;
       const isGet = method === METHODS.GET;
-      xhr.open(method || METHODS.GET, isGet ? `${url}${data}` : url);
+      xhr.open(method || METHODS.GET, isGet ? `${this.baseUrl}${url}${data}` : `${this.baseUrl}${url}`);
 
       if (headers) {
         Object.keys(headers).forEach((key) => xhr.setRequestHeader(key, headers[key]));
@@ -76,3 +83,5 @@ class HTTP {
 }
 
 export default HTTP;
+
+export const HTTPInstance = new HTTP('https://ya-praktikum.tech/api/v2')
