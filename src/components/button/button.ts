@@ -1,13 +1,16 @@
 import Block from '@/services/Block';
 
+import { PageTypes } from '@/interfaces/common';
+
 import { clsx } from '@/utils/clsx';
+import { router } from '@/lib/router';
 
 interface IProps {
   size: 'xs' | 'md' | 'full';
   colorTheme: 'blue' | 'transparent';
-  page: string;
+  page?: PageTypes;
   className: string;
-  onClick: () => void;
+  onClick?: (arg: unknown) => void;
   text: string;
   type?: 'submit' | 'button';
 }
@@ -19,7 +22,12 @@ export class Button extends Block<IProps> {
 
   protected init(): void {
     this.props.events = {
-      click: this.props.onClick,
+      click: (e: Event) => {
+        if (this.props.page) {
+          router.go(`/${this.props.page}`)
+        }
+        this.props.onClick?.(e)
+      },
     };
   }
 

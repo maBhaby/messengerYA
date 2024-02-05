@@ -1,3 +1,3 @@
-export { default as LoginPage } from './login.hbs?raw';
+export { default as LoginPage } from './login.view.hbs?raw';
 
-export { LoginPage as LoginPageClass } from './login';
+export { default as LoginPageClass } from './login';

@@ -1,5 +1,4 @@
 import { BaseInput } from '@/components/input/base/base';
-import { router } from '@/lib/router';
 import Block, { RefType } from '@/services/Block';
 import {
   validateEmail,
@@ -8,6 +7,8 @@ import {
   validatePassword,
   validatePhone,
 } from '@/utils/validations/login';
+import { UserCreateModel } from '@/interfaces/registration';
+import { registrationService } from './registration.service';
 
 type TValFunc = (val: string) => void;
 
@@ -17,11 +18,9 @@ interface IProps {
     email: TValFunc;
     password: TValFunc;
     phone: TValFunc;
-    repeat_password: TValFunc;
     name: TValFunc;
   };
-  onSubmit: (e: Event) => void;
-  handleRedirectToLogin: () => void;
+  onSubmit: (e: Event) => void
 }
 
 interface IRefs extends RefType {
@@ -31,7 +30,6 @@ interface IRefs extends RefType {
   second_name: BaseInput;
   phone: BaseInput;
   password: BaseInput;
-  repeat_password: BaseInput;
 }
 
 export class RegistrationPage extends Block<IProps, IRefs> {
@@ -42,26 +40,22 @@ export class RegistrationPage extends Block<IProps, IRefs> {
         email: validateEmail,
         password: validatePassword,
         phone: validatePhone,
-        repeat_password: validatePassword,
         name: validateName,
       },
-      onSubmit: (event: Event) => {
+      onSubmit: (event) => {
         event.preventDefault();
-        const allValue = Object.values(this.refs).map((el) => {
-          if (el instanceof BaseInput) {
-            return el.getValue();
-          }
-          return null;
-        });
-        if (!allValue.includes(null)) {
-          console.log(...allValue);
+
+        const userValue: UserCreateModel = {
+          first_name: this.refs.first_name.getValue() ?? '',
+          second_name: this.refs.second_name.getValue() ?? '',
+          phone: this.refs.phone.getValue() ?? '',
+          password: this.refs.password.getValue() ?? '',
+          email: this.refs.email.getValue() ?? '',
+          login: this.refs.login.getValue() ?? ''
         }
-        
-        router.go('/chat')
-      },
-      handleRedirectToLogin: () => {
-        router.go('/login');
-      },
+
+        registrationService.signin(userValue)
+      }
     });
   }
 
@@ -91,16 +85,16 @@ export class RegistrationPage extends Block<IProps, IRefs> {
                 ref="login" 
               }}}
               {{{ BaseInput 
-                value="Иван" 
+                value="Ivan" 
                 name="first_name" 
                 type="text" 
-                label="Логин" 
+                label="Имя" 
                 className="reg-page__input"
                 ref="first_name"
                 validate=validate.name
               }}}
               {{{ BaseInput 
-                value="Иванов" 
+                value="Ivanov" 
                 name="second_name" 
                 type="text" 
                 label="Фамилия" 
@@ -109,7 +103,7 @@ export class RegistrationPage extends Block<IProps, IRefs> {
                 validate=validate.name
               }}}
               {{{ BaseInput 
-                value="+7 (909) 967 30 30" 
+                value="79099673030" 
                 name="phone" 
                 type="text" 
                 label="Телефон" 
@@ -118,7 +112,7 @@ export class RegistrationPage extends Block<IProps, IRefs> {
                 validate=validate.phone
               }}}
               {{{ BaseInput 
-                value="12345" 
+                value="qweQ1qweqwe" 
                 name="password" 
                 type="password" 
                 label="Пароль" 
@@ -126,22 +120,13 @@ export class RegistrationPage extends Block<IProps, IRefs> {
                 ref="password"
                 validate=validate.password
               }}}
-              {{{ BaseInput 
-                value="12345" 
-                name="repeat_password" 
-                type="password" 
-                label="Пароль (ещё раз)" 
-                className="reg-page__input"
-                ref="repeat_password"
-                validate=validate.password
-              }}}
               <div class="reg-page__footer">
                 {{{ Button 
-                  page="chat" 
                   size="full" 
                   colorTheme="blue" 
                   text="Зарегистрироваться" 
                   onClick=onSubmit
+                  type="submit"
                 }}}
                 {{{ Button 
                   page="login" 

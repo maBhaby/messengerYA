@@ -26,9 +26,9 @@ class Router<Paths extends string = string> {
   }
 
   start() {
-    // debugger
     window.onpopstate = (event) => {
-      this._onRoute(event.currentTarget!.location.pathname)
+      const currentTarget = event.currentTarget as Window
+      this._onRoute(currentTarget.location.pathname as Paths)
     }
 
     this._onRoute(window.location.pathname as Paths)

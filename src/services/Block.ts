@@ -237,6 +237,10 @@ class Block<Props extends object = {}, Refs extends RefType = RefType> {
     }
   }
 
+  protected getEventBus() {
+    return this.eventBus()
+  }
+
   public show() {
     this.getContent()!.style.display = 'block';
   }

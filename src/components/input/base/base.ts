@@ -32,7 +32,7 @@ export class BaseInput extends Block<IProps, IRefs> {
     return this.refs.inputVal.value;
   }
 
-  private validate() {
+  public validate() {
     const { value } = this;
     const error = this.props.validate?.(value);
     if (error) {

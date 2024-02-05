@@ -7,6 +7,7 @@ export default class EventBus<
   private listeners: { [key in E]?: Listener<M[E]>[] } = {};
 
   on(event: E, callback: Listener<M[E]>) {
+    // debugger
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
@@ -34,12 +35,3 @@ export default class EventBus<
   }
 }
 
-const evBus = new EventBus<'jopa' | 'asdasd'>();
-
-const handleJopa = (res: string) => {
-  console.log(res);
-};
-
-evBus.on('jopa', handleJopa);
-
-evBus.emit('jopa', 'asdasd');

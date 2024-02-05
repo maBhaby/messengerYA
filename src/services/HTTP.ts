@@ -16,7 +16,11 @@ type HTTPMethod = (url: string, options?: IOptionsRequest) => Promise<unknown>;
  *  Get string of query params from object params
  * @param data
  */
-const queryStringify = (data: object) => {
+const queryStringify = (data: object | string) => {
+  if (typeof data === 'string') {
+    return data
+}
+
   let result = '?';
   result += Object.entries(data)
     .map(([key, value]) => `${key}=${Array.isArray(value) ? value.join(',') : String(value)}`)
@@ -53,32 +57,44 @@ class HTTP {
     this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
 
   request = (url: string, options: IOptionsRequest = { method: METHODS.GET }, timeout = 5000) => {
-    const { method, headers, data } = options;
-
+    const { method, headers = {}, data = '' } = options;
     return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.timeout = timeout;
-      const isGet = method === METHODS.GET;
-      xhr.open(method || METHODS.GET, isGet ? `${this.baseUrl}${url}${data}` : `${this.baseUrl}${url}`);
-
-      if (headers) {
-        Object.keys(headers).forEach((key) => xhr.setRequestHeader(key, headers[key]));
+      if (!method) {
+          reject(new Error('no method'));
+          return;
       }
 
-      xhr.onload = () => {
-        resolve(xhr);
-      };
+      const xhr = new XMLHttpRequest();
 
+      xhr.withCredentials = true
+
+      const isGet = method === METHODS.GET;
+      const path = isGet && !!data
+      ? `${this.baseUrl}${url}${queryStringify(data)}`
+      : `${this.baseUrl}${url}`
+
+      xhr.open(method, path);
+
+      Object.keys(headers).forEach(key => {
+          xhr.setRequestHeader(key, headers[key]);
+      });
+  
+      xhr.onload = () => {
+          resolve(xhr);
+      };
+  
       xhr.onabort = reject;
       xhr.onerror = reject;
+  
+      xhr.timeout = timeout;
       xhr.ontimeout = reject;
-
-      if (method === METHODS.GET || !data) {
-        xhr.send();
+      
+      if (isGet || !data) {
+          xhr.send();
       } else {
-        xhr.send(JSON.stringify(data));
+          xhr.send(data);
       }
-    });
+  });
   };
 }
 

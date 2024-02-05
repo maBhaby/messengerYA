@@ -1,15 +1,16 @@
 import Block, { RefType } from '@/services/Block';
 import { BaseInput } from '@/components/input/base/base';
-import { navigate } from '@/services/navigate';
 import { validateLogin } from '@/utils/validations/login';
-import { router } from '@/lib/router';
+import { LoginModel } from '@/interfaces/login';
+import { privateRoute } from '@/utils/privateRoute';
+import { validateAllRefs } from '@/utils/validations/allRefs';
+import { loginService } from './login.service';
 
 interface IProps {
   validate: {
-    login: (val: string) => void;
+    login: typeof validateLogin;
   };
   onLogin: (e: Event) => void;
-  handleOpenRegPage: () => void;
 }
 
 interface IRefs extends RefType {
@@ -17,7 +18,7 @@ interface IRefs extends RefType {
   password: BaseInput;
 }
 
-export class LoginPage extends Block<IProps, IRefs> {
+class LoginPage extends Block<IProps, IRefs> {
   constructor() {
     super({
       validate: {
@@ -25,23 +26,16 @@ export class LoginPage extends Block<IProps, IRefs> {
       },
       onLogin: (event: Event) => {
         event.preventDefault();
-        const login = this.refs.login.getValue();
-        const password = this.refs.password.getValue();
 
-        if (!login) {
-          return;
+        if (validateAllRefs(this.refs)) return 
+
+        const userLoginValue: LoginModel = {
+          login: this.refs.login.getValue() ?? '',
+          password: this.refs.password.getValue() ?? ''
         }
 
-        console.log({
-          login,
-          password,
-        });
-        navigate('chat');
-        this.hide()
-      },
-      handleOpenRegPage: () => {
-        router.go('/registration')
-      },
+        loginService.signIn(userLoginValue)
+      }
     });
   }
 
@@ -64,14 +58,13 @@ export class LoginPage extends Block<IProps, IRefs> {
               {{{ BaseInput ref="password" name="password" type="password" label="Пароль" className="auth-page__input"}}}
               <div class="auth-page__footer">
                 {{{ Button 
-                  page="chat" 
                   size="full" 
                   colorTheme="blue" 
                   onClick=onLogin 
                   type="submit"
                   text="Авторизоваться" 
                 }}}
-                {{{ Button page="registration" colorTheme="transparent" size="xs" text="Нет аккаунта?" onClick=handleOpenRegPage }}}
+                {{{ Button page="registration" colorTheme="transparent" size="xs" text="Нет аккаунта?" }}}
               </div>
             </form>
           </div>
@@ -80,3 +73,5 @@ export class LoginPage extends Block<IProps, IRefs> {
       `;
   }
 }
+
+export default privateRoute(LoginPage)
