@@ -1,3 +1,3 @@
-export { default as TitleView } from './title.hbs?raw';
+export { default as TitleView } from "./title.hbs?raw";
 
-export { Title } from './title';
+export { Title } from "./title";

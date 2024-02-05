@@ -1,3 +1,3 @@
-export { default as SearchInputView } from './search.hbs?raw';
+export { default as SearchInputView } from "./search.hbs?raw";
 
-export { SearchInput } from './search';
+export { SearchInput } from "./search";

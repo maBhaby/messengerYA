@@ -1,7 +1,7 @@
-@use 'src/styles/global/mixins';
+@use "src/styles/global/mixins";
 
 .chat-header {
-  @include mixins.flex('sc');
+  @include mixins.flex("sc");
 
   border-bottom: 1px solid var(--color-secondary-gray);
   padding: 10px 0;

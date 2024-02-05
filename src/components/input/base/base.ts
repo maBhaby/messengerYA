@@ -1,5 +1,5 @@
-import { ErrorLine, Input } from '@/components';
-import Block, { RefType } from '@/services/Block';
+import { ErrorLine, Input } from "@/components";
+import Block, { RefType } from "@/services/Block";
 
 interface IRefs extends RefType {
   errLine: ErrorLine;
@@ -12,7 +12,7 @@ interface IProps {
   label: string;
   value?: string | number;
   errorText?: string;
-  type?: 'text' | 'password';
+  type?: "text" | "password";
   validate: (el?: string) => string;
   onBlur: (e: Event) => void;
 }
@@ -32,7 +32,7 @@ export class BaseInput extends Block<IProps, IRefs> {
     return this.refs.inputVal.value;
   }
 
-  public validate() {
+  validate() {
     const { value } = this;
     const error = this.props.validate?.(value);
     if (error) {
@@ -48,7 +48,7 @@ export class BaseInput extends Block<IProps, IRefs> {
   }
 
   protected render() {
-    const { name, label, className = '', type } = this.props;
+    const { name, label, className = "", type } = this.props;
     return `
       <div class="input ${className}">
         <label for="${name}" class="input__wrap">

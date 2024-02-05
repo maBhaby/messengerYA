@@ -1,3 +1,3 @@
-export { default as ChatItemView } from './chat-item.hbs?raw';
+export { default as ChatItemView } from "./chat-item.hbs?raw";
 
-export { ChatItem } from './chat-item';
+export { ChatItem } from "./chat-item";

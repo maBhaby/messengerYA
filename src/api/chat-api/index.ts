@@ -1,1 +1,1 @@
-export { chatApi } from './chat-api'
+export { chatApi } from "./chat-api";

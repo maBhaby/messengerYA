@@ -1,4 +1,4 @@
-import Block from '@/services/Block';
+import Block from "@/services/Block";
 
 interface IProps {
   linkToChat: string;
@@ -30,7 +30,7 @@ export class ChatItem extends Block<IProps> {
             ${
               unreadMessages !== undefined
                 ? `<span class='chat-item__core_unread_message'>${unreadMessages}</span>`
-                : ''
+                : ""
             }
           </div>
         </div>

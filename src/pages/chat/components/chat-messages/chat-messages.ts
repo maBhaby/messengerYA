@@ -1,4 +1,4 @@
-import Block from '@/services/Block';
+import Block from "@/services/Block";
 
 export class ChatMessages extends Block<object> {
   protected render() {

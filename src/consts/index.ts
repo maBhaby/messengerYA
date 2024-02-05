@@ -3,10 +3,10 @@ export const REG_EXP = {
 };
 
 export const METHODS = {
-  GET: 'GET',
-  POST: 'POST',
-  PUT: 'PUT',
-  DELETE: 'DELETE',
+  GET: "GET",
+  POST: "POST",
+  PUT: "PUT",
+  DELETE: "DELETE",
 } as const;
 
-export const API_PATH = 'https://ya-praktikum.tech/api/v2'
+export const API_PATH = "https://ya-praktikum.tech/api/v2";

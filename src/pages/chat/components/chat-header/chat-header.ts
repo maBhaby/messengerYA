@@ -1,4 +1,4 @@
-import Block from '@/services/Block';
+import Block from "@/services/Block";
 
 interface IProps {
   chatName: string;
@@ -7,7 +7,7 @@ interface IProps {
 export class ChatHeader extends Block<IProps> {
   constructor() {
     super({
-      chatName: 'Вадим',
+      chatName: "Вадим",
     });
   }
 

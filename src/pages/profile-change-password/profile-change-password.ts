@@ -1,7 +1,7 @@
-import { UserValueRow } from '@/components';
-import Block, { RefType } from '@/services/Block';
-import { handleRedirectToChat } from '@/utils/redirects';
-import { arrowIcon } from '@static/images';
+import { UserValueRow } from "@/components";
+import Block, { RefType } from "@/services/Block";
+import { handleRedirectToChat } from "@/utils/redirects";
+import { arrowIcon } from "@static/images";
 
 interface IProps {
   text: string;
@@ -19,7 +19,7 @@ interface IRefs extends RefType {
 export class ProfileChangePassword extends Block<IProps, IRefs> {
   constructor() {
     super({
-      text: 'test',
+      text: "test",
       arrow: arrowIcon,
       onSubmit: (e: Event) => {
         e.preventDefault();
@@ -33,14 +33,16 @@ export class ProfileChangePassword extends Block<IProps, IRefs> {
           console.log(...allValue);
         }
       },
-      handleRedirectToChat: (e) => { this._hideAfterRedirect(e ,handleRedirectToChat)},
+      handleRedirectToChat: (e) => {
+        this._hideAfterRedirect(e, handleRedirectToChat);
+      },
     });
   }
 
-  private _hideAfterRedirect = (event: Event, fn: (e:Event) => void) => {
-    fn(event)
-    this.hide()
-  }
+  private _hideAfterRedirect = (event: Event, fn: (e: Event) => void) => {
+    fn(event);
+    this.hide();
+  };
 
   protected render() {
     return `

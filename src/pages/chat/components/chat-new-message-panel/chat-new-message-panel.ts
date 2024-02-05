@@ -1,7 +1,7 @@
-import Block, { RefType } from '@/services/Block';
-import { Message } from '@/components';
-import { arrowIcon, pinIcon } from '@static/images';
-import { validateMessage } from '@/utils/validations/login';
+import Block, { RefType } from "@/services/Block";
+import { Message } from "@/components";
+import { arrowIcon, pinIcon } from "@static/images";
+import { validateMessage } from "@/utils/validations/login";
 
 interface IProps {
   imgPin: string;

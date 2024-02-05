@@ -1,10 +1,10 @@
-import Block, { RefType } from '@/services/Block';
-import { Input, ErrorLine } from '..';
+import Block, { RefType } from "@/services/Block";
+import { Input, ErrorLine } from "..";
 
 interface IProps {
   value?: string;
   disabled?: boolean;
-  type?: 'text' | 'password';
+  type?: "text" | "password";
   name: string;
   label: string;
   errorText?: string;
@@ -48,7 +48,7 @@ export class UserValueRow extends Block<IProps, IRef> {
   }
 
   protected render() {
-    const { value, type = 'text', name, label } = this.props;
+    const { value, type = "text", name, label } = this.props;
     return `
       <div>
         <div class="user-value-row">

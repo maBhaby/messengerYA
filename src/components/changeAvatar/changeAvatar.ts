@@ -1,5 +1,5 @@
-import Block from '@/services/Block';
-import { userChangeImage } from '@static/images';
+import Block from "@/services/Block";
+import { userChangeImage } from "@static/images";
 
 interface IProps {
   image: string;

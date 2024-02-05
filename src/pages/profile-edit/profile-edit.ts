@@ -1,7 +1,7 @@
-import { UserValueRow } from '@/components/userValueRow/userValueRow';
-import Block, { RefType } from '@/services/Block';
-import { handleRedirectToChat } from '@/utils/redirects';
-import { arrowIcon } from '@static/images';
+import { UserValueRow } from "@/components/userValueRow/userValueRow";
+import Block, { RefType } from "@/services/Block";
+import { handleRedirectToChat } from "@/utils/redirects";
+import { arrowIcon } from "@static/images";
 
 interface IProps {
   onSubmit: (e: Event) => void;
@@ -33,14 +33,16 @@ export class ProfileEditPage extends Block<IProps, IRef> {
         }
       },
       arrow: arrowIcon,
-      handleRedirectToChat: (e) => { this._hideAfterRedirect(e ,handleRedirectToChat)},
+      handleRedirectToChat: (e) => {
+        this._hideAfterRedirect(e, handleRedirectToChat);
+      },
     });
   }
 
-  private _hideAfterRedirect = (event: Event, fn: (e:Event) => void) => {
-    fn(event)
-    this.hide()
-  }
+  private _hideAfterRedirect = (event: Event, fn: (e: Event) => void) => {
+    fn(event);
+    this.hide();
+  };
 
   protected render() {
     return `

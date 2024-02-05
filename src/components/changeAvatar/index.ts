@@ -1,2 +1,2 @@
-export { default as ChangeAvatarView } from './changeAvatar.hbs?raw';
-export { ChangeAvatar } from './changeAvatar';
+export { default as ChangeAvatarView } from "./changeAvatar.hbs?raw";
+export { ChangeAvatar } from "./changeAvatar";

@@ -1,4 +1,4 @@
-import Block from '@/services/Block';
+import Block from "@/services/Block";
 
 export class CurrentChat extends Block<object> {
   constructor() {

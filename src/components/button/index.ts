@@ -1,3 +1,3 @@
-export { default as ButtonView } from './button.hbs?raw';
+export { default as ButtonView } from "./button.hbs?raw";
 
-export { Button } from './button';
+export { Button } from "./button";

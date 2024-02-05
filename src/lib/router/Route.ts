@@ -1,30 +1,29 @@
 import Block, { BlockClass } from "../../services/Block";
 
 type PropsType = {
-  rootQuery: string
-}
+  rootQuery: string;
+};
 
 function render(query: string, block: Block) {
   const root = document.querySelector(query);
-  if (root === null) throw new Error('Could not find the application login')
-  
-  const content = block.getContent()
+  if (root === null) throw new Error("Could not find the application login");
+
+  const content = block.getContent();
   if (content !== null) {
     root.appendChild(content);
   }
-  
+
   return root;
 }
 
 export class Route {
+  private _pathname: string;
 
-  private _pathname: string
+  private _blockClass: BlockClass<object>;
 
-  private _blockClass: BlockClass<object>
+  private _block: Block | null;
 
-  private _block: Block | null
-
-  private _props: PropsType
+  private _props: PropsType;
 
   constructor(pathname: string, view: BlockClass<object>, props: PropsType) {
     this._pathname = pathname;
@@ -47,7 +46,7 @@ export class Route {
   }
 
   match(pathname: string) {
-    return pathname === this._pathname
+    return pathname === this._pathname;
   }
 
   render() {

@@ -1,4 +1,4 @@
-@use 'src/styles/global/mixins';
+@use "src/styles/global/mixins";
 
 .chat-new-message {
   padding: 10px 0;
@@ -19,7 +19,7 @@
     height: 30px;
     border-radius: 100%;
 
-    @include mixins.flex('cc');
+    @include mixins.flex("cc");
 
     svg {
       height: 15px;

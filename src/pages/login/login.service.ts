@@ -1,21 +1,21 @@
-import { authApi } from "@/api/auth-api/auth-api"
-import { chatApi } from "@/api/chat-api"
-import { LoginModel } from "@/interfaces/login"
-import { router } from "@/lib/router"
+import { authApi } from "@/api/auth-api/auth-api";
+import { userApi } from "@/api/user-api/user-api";
+import { LoginModel } from "@/interfaces/login";
+import { router } from "@/lib/router";
+import { apiHasError } from "@/utils/apiHasError";
 
 class LoginService {
   async signIn(data: LoginModel) {
+    const response = await authApi.signIn(data);
 
-    
-
-    try {
-      await authApi.signIn(data)
-      await chatApi.request()
-      router.go('/chat')
-    } catch (error) {
-      throw new Error(`Error: ${error}`)
+    if (apiHasError(response)) {
+      throw new Error("не смог ауф");
     }
+    const userData = await userApi.getCurrentUser();
+    window.store.set({ user: userData });
+
+    router.go("/chat");
   }
 }
 
-export const loginService = new LoginService()
+export const loginService = new LoginService();

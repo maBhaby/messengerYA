@@ -1,56 +1,56 @@
-import Handlebars from 'handlebars';
-import { canonImage } from '@static/images';
+import Handlebars from "handlebars";
+import { canonImage } from "@static/images";
 
-export { default as ChatPage } from './chat.hbs?raw';
-export { default as ChatPageClass} from './chat';
+export { default as ChatPage } from "./chat.hbs?raw";
+export { default as ChatPageClass } from "./chat";
 
-Handlebars.registerHelper('chatList', () => [
+Handlebars.registerHelper("chatList", () => [
   {
-    title: 'Андрей',
-    time: '10:49',
-    message: 'Изображение',
+    title: "Андрей",
+    time: "10:49",
+    message: "Изображение",
     unreadMessages: 4,
-    linkToChat: '/test',
+    linkToChat: "/test",
   },
   {
-    title: 'Киноклуб',
-    time: 'Пт',
-    message: 'Круто',
-    linkToChat: '/rap',
+    title: "Киноклуб",
+    time: "Пт",
+    message: "Круто",
+    linkToChat: "/rap",
   },
 ]);
 
-Handlebars.registerHelper('messagesList', () => [
+Handlebars.registerHelper("messagesList", () => [
   {
-    date: '10 июня',
+    date: "10 июня",
     messages: [
       {
-        type: 'chat',
-        time: '12:00',
+        type: "chat",
+        time: "12:00",
         message:
-          'Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.',
+          "Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.",
       },
       {
-        type: 'me',
-        time: '12:20',
-        message: 'ниче',
-        status: 'readed',
+        type: "me",
+        time: "12:20",
+        message: "ниче",
+        status: "readed",
       },
     ],
   },
   {
-    date: '19 июня',
+    date: "19 июня",
     messages: [
       {
-        type: 'chat',
-        time: '12:00',
+        type: "chat",
+        time: "12:00",
         image: canonImage,
       },
       {
-        type: 'me',
-        time: '12:20',
-        message: 'Чее?!',
-        status: 'sended',
+        type: "me",
+        time: "12:20",
+        message: "Чее?!",
+        status: "sended",
       },
     ],
   },

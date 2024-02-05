@@ -87,19 +87,19 @@ ul {
 }
 
 // reset text input style
-[type='date'],
-[type='datetime'],
-[type='datetime-local'],
-[type='email'],
-[type='month'],
-[type='number'],
-[type='password'],
-[type='search'],
-[type='tel'],
-[type='text'],
-[type='time'],
-[type='url'],
-[type='week'],
+[type="date"],
+[type="datetime"],
+[type="datetime-local"],
+[type="email"],
+[type="month"],
+[type="number"],
+[type="password"],
+[type="search"],
+[type="tel"],
+[type="text"],
+[type="time"],
+[type="url"],
+[type="week"],
 textarea,
 select {
   appearance: none;
@@ -116,8 +116,8 @@ select {
 }
 
 // reset checkbox and radio style
-[type='checkbox'],
-[type='radio'] {
+[type="checkbox"],
+[type="radio"] {
   appearance: none;
 
   &:focus {

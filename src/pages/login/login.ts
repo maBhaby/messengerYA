@@ -1,10 +1,11 @@
-import Block, { RefType } from '@/services/Block';
-import { BaseInput } from '@/components/input/base/base';
-import { validateLogin } from '@/utils/validations/login';
-import { LoginModel } from '@/interfaces/login';
-import { privateRoute } from '@/utils/privateRoute';
-import { validateAllRefs } from '@/utils/validations/allRefs';
-import { loginService } from './login.service';
+import Block, { RefType } from "@/services/Block";
+import { BaseInput } from "@/components/input/base/base";
+import { validateLogin } from "@/utils/validations/login";
+import { LoginModel } from "@/interfaces/login";
+import { privateRoute } from "@/utils/privateRoute";
+import { validateAllRefs } from "@/utils/validations/allRefs";
+import { authApi } from "@/api/auth-api";
+import { loginService } from "./login.service";
 
 interface IProps {
   validate: {
@@ -27,16 +28,23 @@ class LoginPage extends Block<IProps, IRefs> {
       onLogin: (event: Event) => {
         event.preventDefault();
 
-        if (validateAllRefs(this.refs)) return 
+        validateAllRefs({
+          login: this.refs.login,
+          password: this.refs.password,
+        });
 
         const userLoginValue: LoginModel = {
-          login: this.refs.login.getValue() ?? '',
-          password: this.refs.password.getValue() ?? ''
-        }
+          login: this.refs.login.getValue() ?? "",
+          password: this.refs.password.getValue() ?? "",
+        };
 
-        loginService.signIn(userLoginValue)
-      }
+        loginService.signIn(userLoginValue);
+      },
     });
+  }
+
+  protected init(): void {
+    authApi.logout();
   }
 
   render() {
@@ -74,4 +82,4 @@ class LoginPage extends Block<IProps, IRefs> {
   }
 }
 
-export default privateRoute(LoginPage)
+export default privateRoute(LoginPage);

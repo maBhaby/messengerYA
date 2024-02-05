@@ -1,5 +1,5 @@
-import Block from '@/services/Block';
-import { privateRoute } from '@/utils/privateRoute';
+import Block from "@/services/Block";
+import { privateRoute } from "@/utils/privateRoute";
 
 class ChatPage extends Block<object> {
   constructor() {
@@ -21,4 +21,4 @@ class ChatPage extends Block<object> {
   }
 }
 
-export default privateRoute(ChatPage)
+export default privateRoute(ChatPage);

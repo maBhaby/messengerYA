@@ -1,3 +1,3 @@
-export { default as SearchPanelView } from './search-panel.hbs?raw';
+export { default as SearchPanelView } from "./search-panel.hbs?raw";
 
-export { SearchPanel } from './search-panel';
+export { SearchPanel } from "./search-panel";

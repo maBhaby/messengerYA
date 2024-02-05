@@ -7,9 +7,9 @@ import {
   ProfileChangePasswordClass,
   ProfileEditPageClass,
   ChatPageClass,
-} from '@/pages';
-import { PageTypes } from '@/interfaces/common';
-import { BlockClass } from './Block';
+} from "@/pages";
+import { PageTypes } from "@/interfaces/common";
+import { BlockClass } from "./Block";
 
 const pages: Record<PageTypes, BlockClass<object>> = {
   login: LoginPageClass,
@@ -17,8 +17,8 @@ const pages: Record<PageTypes, BlockClass<object>> = {
   page404: Page404,
   page500: Page500,
   profile: ProfilePageClass,
-  'change-password': ProfileChangePasswordClass,
-  'profile-edit': ProfileEditPageClass,
+  "change-password": ProfileChangePasswordClass,
+  "profile-edit": ProfileEditPageClass,
   chat: ChatPageClass,
 };
 
@@ -29,10 +29,10 @@ function initContent(rootNode: HTMLElement, page: PageTypes) {
 }
 
 export const navigate = (page: PageTypes) => {
-  const app = document.getElementById('app');
+  const app = document.getElementById("app");
 
   if (app === null) {
-    throw new Error('Error: не найдет элемент входа в приложение');
+    throw new Error("Error: не найдет элемент входа в приложение");
   }
 
   initContent(app, page);

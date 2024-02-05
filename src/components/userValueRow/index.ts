@@ -1,3 +1,3 @@
-export { default as UserValueRowView } from './userValueRow.hbs?raw';
+export { default as UserValueRowView } from "./userValueRow.hbs?raw";
 
-export { UserValueRow } from './userValueRow';
+export { UserValueRow } from "./userValueRow";

@@ -1,8 +1,8 @@
-import { navigate } from '@/services/navigate';
+import { navigate } from "@/services/navigate";
 
 export const handleRedirectToChat = (e: Event) => {
   e.preventDefault();
-  navigate('chat');
+  navigate("chat");
 };
 
 export const handleLogout = (e: Event) => {

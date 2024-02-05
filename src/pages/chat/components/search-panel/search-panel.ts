@@ -1,6 +1,6 @@
-import Block from '@/services/Block';
-import { navigate } from '@/services/navigate';
-import { arrowWithoutLineIcon } from '@static/images';
+import Block from "@/services/Block";
+import { navigate } from "@/services/navigate";
+import { arrowWithoutLineIcon } from "@static/images";
 
 interface IProps {
   imageLink: string;
@@ -13,7 +13,7 @@ export class SearchPanel extends Block<IProps> {
       imageLink: arrowWithoutLineIcon,
       handleOpenProfile: (e: Event) => {
         e.preventDefault();
-        navigate('profile');
+        navigate("profile");
       },
     });
   }

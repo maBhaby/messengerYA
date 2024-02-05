@@ -1,18 +1,18 @@
-import Block from '@/services/Block';
+import Block from "@/services/Block";
 
-import { PageTypes } from '@/interfaces/common';
+import { PageTypes } from "@/interfaces/common";
 
-import { clsx } from '@/utils/clsx';
-import { router } from '@/lib/router';
+import { clsx } from "@/utils/clsx";
+import { router } from "@/lib/router";
 
 interface IProps {
-  size: 'xs' | 'md' | 'full';
-  colorTheme: 'blue' | 'transparent';
+  size: "xs" | "md" | "full";
+  colorTheme: "blue" | "transparent";
   page?: PageTypes;
   className: string;
   onClick?: (arg: unknown) => void;
   text: string;
-  type?: 'submit' | 'button';
+  type?: "submit" | "button";
 }
 
 export class Button extends Block<IProps> {
@@ -24,20 +24,20 @@ export class Button extends Block<IProps> {
     this.props.events = {
       click: (e: Event) => {
         if (this.props.page) {
-          router.go(`/${this.props.page}`)
+          router.go(`/${this.props.page}`);
         }
-        this.props.onClick?.(e)
+        this.props.onClick?.(e);
       },
     };
   }
 
   protected render(): string {
-    const { size, colorTheme, className, page, text, type = 'button' } = this.props;
+    const { size, colorTheme, className, page, text, type = "button" } = this.props;
     return `
       <button 
-        ${page ? 'page="{{page}}" ' : ''}
+        ${page ? 'page="{{page}}" ' : ""}
         class="
-        ${clsx('button', {
+        ${clsx("button", {
           [`button__size-${size}`]: Boolean(size),
           [`button__color-${colorTheme}`]: Boolean(colorTheme),
           [`${className}`]: Boolean(className),

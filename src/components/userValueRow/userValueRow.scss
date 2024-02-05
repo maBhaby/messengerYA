@@ -1,7 +1,7 @@
-@use 'src/styles/global/mixins';
+@use "src/styles/global/mixins";
 
 .user-value-row {
-  @include mixins.flex('sc');
+  @include mixins.flex("sc");
 
   height: 35px;
 

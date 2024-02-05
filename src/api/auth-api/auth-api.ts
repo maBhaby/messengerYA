@@ -6,23 +6,26 @@ import { BaseAPI } from "../base-api";
 
 class AuthApi extends BaseAPI {
   public create(userValue: UserCreateModel): void {
-    HTTPInstance.post('/auth/signup', {
+    HTTPInstance.post("/auth/signup", {
       data: toJSON(userValue),
       headers: {
-        'Content-Type': 'application/json; charset=utf-8'
-      }
-    })
+        "Content-Type": "application/json; charset=utf-8",
+      },
+    });
   }
 
   public async signIn(data: LoginModel): Promise<void> {
-    await HTTPInstance.post('/auth/signin', {
+    await HTTPInstance.post("/auth/signin", {
       data: toJSON(data),
       headers: {
-        'Content-Type': 'application/json; charset=utf-8'
-      }
-    })
+        "Content-Type": "application/json; charset=utf-8",
+      },
+    });
   }
-  
+
+  public async logout(): Promise<void> {
+    await HTTPInstance.post("/auth/logout");
+  }
 }
 
-export const authApi = new AuthApi()
+export const authApi = new AuthApi();

@@ -3,8 +3,8 @@ import { BaseAPI } from "../base-api";
 
 class ChatApi extends BaseAPI {
   async request(): Promise<void> {
-    await HTTPInstance.get('/chats')
+    await HTTPInstance.get("/chats");
   }
 }
 
-export const chatApi = new ChatApi()
+export const chatApi = new ChatApi();

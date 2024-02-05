@@ -1,4 +1,4 @@
-import Block from '@/services/Block';
+import Block from "@/services/Block";
 
 export class Page404 extends Block<object> {
   constructor() {

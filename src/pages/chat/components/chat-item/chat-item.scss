@@ -1,4 +1,4 @@
-@use 'src/styles/global/mixins';
+@use "src/styles/global/mixins";
 
 .chat-item {
   display: flex;
@@ -25,11 +25,11 @@
     gap: 3px;
 
     &_top {
-      @include mixins.flex('sc');
+      @include mixins.flex("sc");
     }
 
     &_bottom {
-      @include mixins.flex('sc');
+      @include mixins.flex("sc");
     }
 
     &_title {
@@ -52,7 +52,7 @@
     }
 
     &_unread_message {
-      @include mixins.flex('cc');
+      @include mixins.flex("cc");
 
       width: 20px;
       height: 20px;

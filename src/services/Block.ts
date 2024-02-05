@@ -1,16 +1,16 @@
 /* eslint-disable no-use-before-define */
-import Handlebars from 'handlebars';
-import { nanoid } from 'nanoid';
+import Handlebars from "handlebars";
+import { nanoid } from "nanoid";
 
-import { isDeepEqual } from '@/utils/deepEqual';
+import { isDeepEqual } from "@/utils/deepEqual";
 
-import EventBus from './EventBus';
+import EventBus from "./EventBus";
 
-export type RefType = Record<string, HTMLElement | Block<object>>;
+export type RefType = Record<string, Block<object>>;
 
 type BlockClassProps = {
   [key: string]: unknown;
-} & EventsProps
+} & EventsProps;
 
 export interface BlockClass<P extends object = BlockClassProps, R extends RefType = RefType>
   extends Function {
@@ -23,11 +23,11 @@ type EventsProps = { events?: Record<string, EventListenerOrEventListenerObject>
 
 class Block<Props extends object = {}, Refs extends RefType = RefType> {
   static EVENTS = {
-    INIT: 'init',
-    FLOW_CDM: 'flow:component-did-mount',
-    FLOW_CDU: 'flow:component-did-update',
-    FLOW_CWU: 'flow:component-will-unmount',
-    FLOW_RENDER: 'flow:render',
+    INIT: "init",
+    FLOW_CDM: "flow:component-did-mount",
+    FLOW_CDU: "flow:component-did-update",
+    FLOW_CWU: "flow:component-will-unmount",
+    FLOW_RENDER: "flow:render",
   };
 
   public id = nanoid(6);
@@ -122,13 +122,11 @@ class Block<Props extends object = {}, Refs extends RefType = RefType> {
   }
 
   _componentWillUnmount() {
-    this._removeEvents()
+    this._removeEvents();
     this.componentWillUnmount();
   }
 
-  componentWillUnmount() {
-    return true;
-  }
+  componentWillUnmount(): void {}
 
   setProps = (nextProps: object) => {
     if (!nextProps) {
@@ -169,7 +167,7 @@ class Block<Props extends object = {}, Refs extends RefType = RefType> {
 
     const html = Handlebars.compile(template)(contextAndStubs);
 
-    const temp = document.createElement('template');
+    const temp = document.createElement("template");
 
     temp.innerHTML = html;
     contextAndStubs.__children?.forEach(({ embed }) => {
@@ -185,7 +183,7 @@ class Block<Props extends object = {}, Refs extends RefType = RefType> {
   }
 
   protected render(): string {
-    return '';
+    return "";
   }
 
   getContent() {
@@ -206,7 +204,7 @@ class Block<Props extends object = {}, Refs extends RefType = RefType> {
     return new Proxy(props, {
       get(target, prop) {
         const value = target[prop as string];
-        return typeof value === 'function' ? value.bind(target) : value;
+        return typeof value === "function" ? value.bind(target) : value;
       },
       set(target, prop, value) {
         const oldTarget = { ...target };
@@ -217,36 +215,36 @@ class Block<Props extends object = {}, Refs extends RefType = RefType> {
         return true;
       },
       deleteProperty() {
-        throw new Error('Нет доступа');
+        throw new Error("Нет доступа");
       },
     });
   }
 
   public get value() {
     if (this._element === null) {
-      throw new Error('Error: element non in DOM');
+      throw new Error("Error: element non in DOM");
     }
 
     try {
       return (
         (this._element && (<HTMLInputElement>this._element).value) ||
-        this._element.querySelector('input')?.value
+        this._element.querySelector("input")?.value
       );
     } catch {
-      return '';
+      return "";
     }
   }
 
   protected getEventBus() {
-    return this.eventBus()
+    return this.eventBus();
   }
 
   public show() {
-    this.getContent()!.style.display = 'block';
+    this.getContent()!.style.display = "block";
   }
 
   public hide() {
-    this.getContent()!.style.display = 'none';
+    this.getContent()!.style.display = "none";
   }
 }
 

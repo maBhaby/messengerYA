@@ -1,14 +1,14 @@
-import { BaseInput } from '@/components/input/base/base';
-import Block, { RefType } from '@/services/Block';
+import { BaseInput } from "@/components/input/base/base";
+import Block, { RefType } from "@/services/Block";
 import {
   validateEmail,
   validateLogin,
   validateName,
   validatePassword,
   validatePhone,
-} from '@/utils/validations/login';
-import { UserCreateModel } from '@/interfaces/registration';
-import { registrationService } from './registration.service';
+} from "@/utils/validations/login";
+import { UserCreateModel } from "@/interfaces/registration";
+import { registrationService } from "./registration.service";
 
 type TValFunc = (val: string) => void;
 
@@ -20,7 +20,7 @@ interface IProps {
     phone: TValFunc;
     name: TValFunc;
   };
-  onSubmit: (e: Event) => void
+  onSubmit: (e: Event) => void;
 }
 
 interface IRefs extends RefType {
@@ -46,16 +46,16 @@ export class RegistrationPage extends Block<IProps, IRefs> {
         event.preventDefault();
 
         const userValue: UserCreateModel = {
-          first_name: this.refs.first_name.getValue() ?? '',
-          second_name: this.refs.second_name.getValue() ?? '',
-          phone: this.refs.phone.getValue() ?? '',
-          password: this.refs.password.getValue() ?? '',
-          email: this.refs.email.getValue() ?? '',
-          login: this.refs.login.getValue() ?? ''
-        }
+          first_name: this.refs.first_name.getValue() ?? "",
+          second_name: this.refs.second_name.getValue() ?? "",
+          phone: this.refs.phone.getValue() ?? "",
+          password: this.refs.password.getValue() ?? "",
+          email: this.refs.email.getValue() ?? "",
+          login: this.refs.login.getValue() ?? "",
+        };
 
-        registrationService.signin(userValue)
-      }
+        registrationService.signin(userValue);
+      },
     });
   }
 

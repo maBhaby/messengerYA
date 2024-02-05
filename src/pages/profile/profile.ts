@@ -1,38 +1,41 @@
-import Block from '@/services/Block';
-import { arrowIcon } from '@static/images';
+import Block from "@/services/Block";
+import { arrowIcon } from "@static/images";
 
-import { 
-  handleRedirectToChat, 
-  handleLogout, 
-  handleRedirectToChangePassword, 
-  handleRedirectToProfileEdit 
-} from '@/utils/redirects';
+import {
+  handleRedirectToChat,
+  handleLogout,
+  handleRedirectToChangePassword,
+  handleRedirectToProfileEdit,
+} from "@/utils/redirects";
 
 interface IProps {
   userName: string;
   arrow: string;
   handleRedirectToChat: typeof handleRedirectToChat;
   handleLogout: typeof handleLogout;
-  handleRedirectToChangePassword: typeof handleRedirectToChangePassword
-  handleRedirectToProfileEdit: typeof handleRedirectToProfileEdit
+  handleRedirectToChangePassword: typeof handleRedirectToChangePassword;
+  handleRedirectToProfileEdit: typeof handleRedirectToProfileEdit;
 }
 
 export class ProfilePage extends Block<IProps> {
   constructor() {
     super({
-      userName: 'asd',
+      userName: "asd",
       arrow: arrowIcon,
-      handleRedirectToChat: (e) => { this._hideAfterRedirect(e ,handleRedirectToChat)},
-      handleRedirectToProfileEdit: (e) => this._hideAfterRedirect(e ,handleRedirectToProfileEdit),
-      handleLogout: (e) => this._hideAfterRedirect(e ,handleLogout),
-      handleRedirectToChangePassword: (e) => this._hideAfterRedirect(e ,handleRedirectToChangePassword)
+      handleRedirectToChat: (e) => {
+        this._hideAfterRedirect(e, handleRedirectToChat);
+      },
+      handleRedirectToProfileEdit: (e) => this._hideAfterRedirect(e, handleRedirectToProfileEdit),
+      handleLogout: (e) => this._hideAfterRedirect(e, handleLogout),
+      handleRedirectToChangePassword: (e) =>
+        this._hideAfterRedirect(e, handleRedirectToChangePassword),
     });
   }
 
-  private _hideAfterRedirect = (event: Event, fn: (e:Event) => void) => {
-    fn(event)
-    this.hide()
-  }
+  private _hideAfterRedirect = (event: Event, fn: (e: Event) => void) => {
+    fn(event);
+    this.hide();
+  };
 
   protected render() {
     const { userName } = this.props;

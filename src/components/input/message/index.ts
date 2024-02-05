@@ -1,3 +1,3 @@
-export { default as MessageInputView } from './message.hbs?raw';
+export { default as MessageInputView } from "./message.hbs?raw";
 
-export { MessageInput } from './message';
+export { MessageInput } from "./message";

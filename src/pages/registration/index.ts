@@ -1,3 +1,3 @@
-export { default as RegistrationPage } from './registration.view.hbs?raw';
+export { default as RegistrationPage } from "./registration.view.hbs?raw";
 
-export { RegistrationPage as RegistrationPageClass } from './registration';
+export { RegistrationPage as RegistrationPageClass } from "./registration";

@@ -6,12 +6,12 @@ class RegistrationService {
   signin(data: UserCreateModel) {
     // validate
     try {
-      authApi.create(data)
-      router.go('/chat')
+      authApi.create(data);
+      router.go("/chat");
     } catch (error) {
-      throw new Error(`Error: ${error}`)
+      throw new Error(`Error: ${error}`);
     }
   }
 }
 
-export const registrationService = new RegistrationService()
+export const registrationService = new RegistrationService();

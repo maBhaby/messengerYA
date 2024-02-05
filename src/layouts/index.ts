@@ -1,2 +1,2 @@
-export { CenterLayout } from './center';
-export { ProfileLayout } from './profile';
+export { CenterLayout } from "./center";
+export { ProfileLayout } from "./profile";

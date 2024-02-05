@@ -1,4 +1,4 @@
-const isObject = (object: object) => object != null && typeof object === 'object';
+const isObject = (object: object) => object != null && typeof object === "object";
 
 export const isDeepEqual = <T extends object>(
   object1: { [index: string]: T },

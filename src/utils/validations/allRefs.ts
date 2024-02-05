@@ -3,19 +3,13 @@ import { RefType } from "@/services/Block";
 
 // type ObjectType = Record<string, BaseInput>
 interface ObjectType extends RefType {
-  [key: string]: BaseInput
+  [key: string]: BaseInput;
 }
 
 export const validateAllRefs = (obj: ObjectType) => {
-  console.log(obj);
-  
-  const result = Object.values(obj).map((val) => {
-    debugger
-    return val.props.validate?.(val.value)
-  })
-
-  return result.find((el) => {
-    debugger
-    return el
-  })
-}
+  Object.entries(obj).forEach(([, val]) => {
+    if ((val as BaseInput).getValue() === null) {
+      throw new Error("ошибка валидации");
+    }
+  });
+};
