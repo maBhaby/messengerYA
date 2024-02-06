@@ -7,9 +7,18 @@ export const privateRoute = <P extends object, R extends RefType>(Component: typ
       // debugger
       // this.getEventBus()
       super.getEventBus().on(Block.EVENTS.INIT, this.checkAuthUser.bind(this));
+      this.gener();
+    }
+
+    protected init(): void {
+      console.log("init");
     }
 
     private checkAuthUser(): void {
       console.log("with Private");
+    }
+
+    private gener() {
+      this.getEventBus().on(Block.EVENTS.INIT, this.checkAuthUser.bind(this));
     }
   };

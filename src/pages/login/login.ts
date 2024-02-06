@@ -1,11 +1,15 @@
 import Block, { RefType } from "@/services/Block";
-import { BaseInput } from "@/components/input/base/base";
 import { validateLogin } from "@/utils/validations/login";
 import { LoginModel } from "@/interfaces/login";
 import { privateRoute } from "@/utils/privateRoute";
 import { validateAllRefs } from "@/utils/validations/allRefs";
 import { authApi } from "@/api/auth-api";
+import { WithBaseInput } from "@/interfaces/common";
 import { loginService } from "./login.service";
+
+type TInputRefs = WithBaseInput<LoginModel>;
+
+type TBlockRefs = TInputRefs & RefType;
 
 interface IProps {
   validate: {
@@ -14,12 +18,7 @@ interface IProps {
   onLogin: (e: Event) => void;
 }
 
-interface IRefs extends RefType {
-  login: BaseInput;
-  password: BaseInput;
-}
-
-class LoginPage extends Block<IProps, IRefs> {
+class LoginPage extends Block<IProps, TBlockRefs> {
   constructor() {
     super({
       validate: {
@@ -28,10 +27,7 @@ class LoginPage extends Block<IProps, IRefs> {
       onLogin: (event: Event) => {
         event.preventDefault();
 
-        validateAllRefs({
-          login: this.refs.login,
-          password: this.refs.password,
-        });
+        validateAllRefs(this.refs as TInputRefs);
 
         const userLoginValue: LoginModel = {
           login: this.refs.login.getValue() ?? "",
@@ -45,6 +41,7 @@ class LoginPage extends Block<IProps, IRefs> {
 
   protected init(): void {
     authApi.logout();
+    console.log("login init");
   }
 
   render() {

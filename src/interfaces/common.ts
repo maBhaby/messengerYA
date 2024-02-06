@@ -1,3 +1,5 @@
+import { BaseInput } from "@/components";
+
 export type PageTypes =
   | "login"
   | "chat"
@@ -9,6 +11,10 @@ export type PageTypes =
   | "change-password";
 
 type ToPath<T extends string = string> = `/${T}`;
+
+export type WithBaseInput<T> = {
+  [P in keyof T]: BaseInput;
+};
 
 export type PagePathsType = ToPath<PageTypes>;
 

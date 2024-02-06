@@ -5,13 +5,15 @@ import { toJSON } from "@/utils/common";
 import { BaseAPI } from "../base-api";
 
 class AuthApi extends BaseAPI {
-  public create(userValue: UserCreateModel): void {
-    HTTPInstance.post("/auth/signup", {
+  public async create(userValue: UserCreateModel) {
+    const result = await HTTPInstance.post("/auth/signup", {
       data: toJSON(userValue),
       headers: {
         "Content-Type": "application/json; charset=utf-8",
       },
     });
+
+    return result;
   }
 
   public async signIn(data: LoginModel): Promise<void> {

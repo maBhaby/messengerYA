@@ -5,7 +5,7 @@ import { router } from "@/lib/router";
 import { apiHasError } from "@/utils/apiHasError";
 
 class LoginService {
-  async signIn(data: LoginModel) {
+  public async signIn(data: LoginModel) {
     const response = await authApi.signIn(data);
 
     if (apiHasError(response)) {
