@@ -3,7 +3,8 @@ import { privateRoute } from "@/utils/privateRoute";
 
 class ChatPage extends Block<object> {
   constructor() {
-    super({});
+    super();
+    privateRoute()
   }
 
   protected render() {
@@ -21,4 +22,4 @@ class ChatPage extends Block<object> {
   }
 }
 
-export default privateRoute(ChatPage);
+export default ChatPage;

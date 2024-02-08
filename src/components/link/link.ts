@@ -1,5 +1,6 @@
 import Block from "@/services/Block";
 import { PageTypes } from "@/interfaces/common";
+import { router } from "@/lib/router";
 
 import { clsx } from "@/utils/clsx";
 
@@ -19,7 +20,12 @@ export class Link extends Block<IProps> {
 
   protected init(): void {
     this.props.events = {
-      click: this.props.onClick,
+      click: (e: Event) => {
+        if (this.props.page) {
+          router.go(`/${this.props.page}`);
+        }
+        this.props.onClick?.(e);
+      },
     };
   }
 

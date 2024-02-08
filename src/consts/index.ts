@@ -10,3 +10,8 @@ export const METHODS = {
 } as const;
 
 export const API_PATH = "https://ya-praktikum.tech/api/v2";
+
+
+export const HTTP_CODES = {
+  UNAUTHORIZED: 401
+} as const

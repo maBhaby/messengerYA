@@ -1,9 +1,7 @@
 import Block, { RefType } from "@/services/Block";
 import { validateLogin } from "@/utils/validations/login";
 import { LoginModel } from "@/interfaces/login";
-import { privateRoute } from "@/utils/privateRoute";
 import { validateAllRefs } from "@/utils/validations/allRefs";
-import { authApi } from "@/api/auth-api";
 import { WithBaseInput } from "@/interfaces/common";
 import { loginService } from "./login.service";
 
@@ -40,7 +38,7 @@ class LoginPage extends Block<IProps, TBlockRefs> {
   }
 
   protected init(): void {
-    authApi.logout();
+    // authApi.logout();
     console.log("login init");
   }
 
@@ -79,4 +77,4 @@ class LoginPage extends Block<IProps, TBlockRefs> {
   }
 }
 
-export default privateRoute(LoginPage);
+export default LoginPage;

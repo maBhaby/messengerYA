@@ -41,7 +41,8 @@ export class Route {
 
   leave() {
     if (this._block) {
-      this._block.hide();
+      this._block = null
+      document.querySelector(this._props.rootQuery)!.innerHTML = ''
     }
   }
 

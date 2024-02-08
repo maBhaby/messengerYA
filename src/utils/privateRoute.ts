@@ -1,24 +1,17 @@
-import Block, { RefType } from "@/services/Block";
 
-export const privateRoute = <P extends object, R extends RefType>(Component: typeof Block<P, R>) =>
-  class extends Component {
-    constructor() {
-      super();
-      // debugger
-      // this.getEventBus()
-      super.getEventBus().on(Block.EVENTS.INIT, this.checkAuthUser.bind(this));
-      this.gener();
-    }
+import { router } from "@/lib/router";
+import { userApi } from "@/api/user-api/user-api";
+import { HTTP_CODES } from "@/consts";
 
-    protected init(): void {
-      console.log("init");
-    }
 
-    private checkAuthUser(): void {
-      console.log("with Private");
+export const privateRoute= async () => {
+  try {
+    const res = await userApi.getCurrentUser()
+    if (res.status === HTTP_CODES.UNAUTHORIZED) {
+      router.go('/login')
     }
-
-    private gener() {
-      this.getEventBus().on(Block.EVENTS.INIT, this.checkAuthUser.bind(this));
-    }
-  };
+    
+  } catch (error) {
+    router.go('/login')
+  }
+}

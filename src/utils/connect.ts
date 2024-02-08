@@ -11,6 +11,7 @@ export function connect(mapStateToProps: (state: AppState) => Partial<AppState>)
       constructor(props: P) {
         const { store } = window;
         // сохраняем начальное состояние
+        debugger
         let state = mapStateToProps(store.getState());
 
         super({ ...props, ...state });

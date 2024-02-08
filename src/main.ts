@@ -42,8 +42,8 @@ const bootstrap = () => {
     });
   };
 
-  initRoutes();
   initStore();
+  initRoutes();
 };
 
 Object.entries(Layouts).forEach(([keys, comp]) => {
